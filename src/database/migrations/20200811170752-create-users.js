@@ -36,6 +36,7 @@ module.exports = {
       status: {
         type: Sequelize.ENUM([
           'Active',
+          'Inactive',
           'Disabled',
           'Deleted'
         ]),

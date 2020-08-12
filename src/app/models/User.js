@@ -38,7 +38,7 @@ class User extends Model {
         allowNull: false
       },
       status: {
-        type: DataTypes.ENUM('Active', 'Disabled', 'Deleted'),
+        type: DataTypes.ENUM('Active', 'Inactive', 'Disabled', 'Deleted'),
         allowNull: true
       }
     }, {

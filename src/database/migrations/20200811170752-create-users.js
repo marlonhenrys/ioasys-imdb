@@ -31,7 +31,8 @@ module.exports = {
           'Admin',
           'Member'
         ]),
-        allowNull: false
+        allowNull: false,
+        defaultValue: 'Member'
       },
       status: {
         type: Sequelize.ENUM([
@@ -40,7 +41,8 @@ module.exports = {
           'Disabled',
           'Deleted'
         ]),
-        allowNull: false
+        allowNull: false,
+        defaultValue: 'Active'
       },
       created_at: {
         type: Sequelize.DATE,

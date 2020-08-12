@@ -1,18 +1,18 @@
 const ApplicationError = require('../utils/errorHandler')
-// const { role } = require('../utils/enumUser')
+const { role } = require('../utils/enumUser')
 
 module.exports = async (req, res, next) => {
   try {
     const action = req.method + ' ' + req.path
-    // const userType = req.auth.type
+    const userRole = req.auth.role
     // const { id } = req.params
 
     let permission = false
 
     switch (action) {
-    //   case 'POST /users':
-    //     permission = true
-    //     break
+      case 'POST /users':
+        permission = userRole === role.ADM
+        break
       default:
         permission = false
         break

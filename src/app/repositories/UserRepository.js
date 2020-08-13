@@ -19,6 +19,13 @@ module.exports = {
     }
   }),
 
+  findAllByRole: role => User.findAll({
+    where: { role },
+    attributes: {
+      exclude: ['password', 'createdAt', 'updatedAt']
+    }
+  }),
+
   findAll: () => User.findAll({
     attributes: {
       exclude: ['password', 'createdAt', 'updatedAt']

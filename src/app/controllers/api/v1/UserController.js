@@ -4,6 +4,21 @@ const { user: errorMessages } = require('../../../utils/errorMessages')
 
 module.exports = {
 
+  index: async (req, res) => {
+    try {
+      const { role } = req.query
+      const users = await userService.findAll(role)
+
+      return res.status(200).json(users)
+    } catch (error) {
+      console.error(error)
+
+      return res.status(error.status || 500).json({
+        message: error.message
+      })
+    }
+  },
+
   create: async (req, res) => {
     try {
       await validator.validate(req.body, {
@@ -25,6 +40,21 @@ module.exports = {
       await userService.create(user)
 
       return res.status(204).send()
+    } catch (error) {
+      console.error(error)
+
+      return res.status(error.status || 500).json({
+        message: error.message
+      })
+    }
+  },
+
+  show: async (req, res) => {
+    try {
+      const { id } = req.params
+      const user = await userService.findOne(id)
+
+      return res.status(200).json(user)
     } catch (error) {
       console.error(error)
 

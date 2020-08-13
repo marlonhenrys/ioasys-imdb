@@ -196,6 +196,96 @@ module.exports = {
             description: 'Erro de validação dos dados'
           }
         }
+      },
+      get: {
+        tags: [
+          'Usuário'
+        ],
+        summary: 'Listar usuários existentes',
+        parameters: [
+          {
+            name: 'role',
+            in: 'query',
+            description: 'Tipo dos usuários a serem listados',
+            type: 'string'
+          }
+        ],
+        responses: {
+          200: {
+            description: 'Lista de usuários',
+            schema: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  id: {
+                    type: 'integer'
+                  },
+                  name: {
+                    type: 'string'
+                  },
+                  email: {
+                    type: 'string'
+                  },
+                  username: {
+                    type: 'string'
+                  },
+                  role: {
+                    type: 'string'
+                  }
+                }
+              }
+            }
+          },
+          400: {
+            description: 'Erro na requisição'
+          }
+        }
+      }
+    },
+    '/users/{id}': {
+      get: {
+        tags: [
+          'Usuário'
+        ],
+        summary: 'Buscar um usuário existente',
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            description: 'ID do usuário a ser pesquisado',
+            required: true,
+            type: 'integer'
+          }
+        ],
+        responses: {
+          200: {
+            description: 'Usuário encontrado',
+            schema: {
+              type: 'object',
+              properties: {
+                id: {
+                  type: 'integer'
+                },
+                name: {
+                  type: 'string'
+                },
+                email: {
+                  type: 'string'
+                },
+                username: {
+                  type: 'string'
+                },
+                role: {
+                  type: 'string'
+                }
+              }
+            }
+          },
+          400: {
+            description: 'Erro na requisição'
+          }
+        }
       }
     }
   },

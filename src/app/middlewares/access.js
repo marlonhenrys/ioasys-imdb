@@ -5,12 +5,18 @@ module.exports = async (req, res, next) => {
   try {
     const action = req.method + ' ' + req.path
     const userRole = req.auth.role
-    // const { id } = req.params
+    const { id } = req.params
 
     let permission = false
 
     switch (action) {
       case 'POST /users':
+        permission = userRole === role.ADM
+        break
+      case 'GET /users':
+        permission = userRole === role.ADM
+        break
+      case `GET /users/${id}`:
         permission = userRole === role.ADM
         break
       default:

@@ -1,6 +1,6 @@
-const { userService } = require('../services')
+const { userService } = require('../../../services')
 const validator = require('indicative/validator')
-const { user: errorMessages } = require('../utils/errorMessages')
+const { user: errorMessages } = require('../../../utils/errorMessages')
 
 module.exports = {
 

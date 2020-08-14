@@ -12,7 +12,7 @@ const app = express()
 app.use(morgan('combined'))
 
 app.use(express.json())
-app.use(routes)
+app.use('/api/v1', routes)
 
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerConfig))
 

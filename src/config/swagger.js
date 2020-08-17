@@ -7,7 +7,7 @@ module.exports = {
     description: 'Trilha de aprendizagem - ioasys'
   },
   host: 'localhost:3333',
-  basePath: '/',
+  basePath: '/api/v1',
   tags: [
     {
       name: 'Autenticação',
@@ -15,6 +15,10 @@ module.exports = {
     },
     {
       name: 'Usuário',
+      description: 'CRUD'
+    },
+    {
+      name: 'Filme',
       description: 'CRUD'
     }
   ],
@@ -399,6 +403,12 @@ module.exports = {
           }
         }
       }
+    },
+    '/films': {
+
+    },
+    '/films/{id}': {
+
     }
   },
   securityDefinitions: {

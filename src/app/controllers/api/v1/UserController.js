@@ -94,7 +94,7 @@ module.exports = {
   updateStatus: async (req, res) => {
     try {
       await validator.validate(req.body, {
-        users: 'required|array',
+        users: 'array',
         status: 'required|string|in:Active,Inactive,Disabled'
       }, errorMessages)
 

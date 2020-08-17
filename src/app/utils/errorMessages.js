@@ -13,6 +13,7 @@ module.exports = {
     'email.required': 'O email é obrigatório',
     'email.email': 'Formato de email inválido',
     'email.unique': 'Este email já está cadastrado',
+    'users.array': 'É esperado um vetor com ID de usuários',
     'status.required': 'O status é obrigatório',
     'status.in': 'Status inválido'
   }

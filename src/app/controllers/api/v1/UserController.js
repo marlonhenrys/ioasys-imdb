@@ -62,5 +62,68 @@ module.exports = {
         message: error.message
       })
     }
+  },
+
+  update: async (req, res) => {
+    try {
+      await validator.validate(req.body, {
+        name: 'string|min:3',
+        username: 'string|unique:User|min:3|max:30',
+        email: 'email|unique:User'
+      }, errorMessages)
+
+      const data = {
+        id: req.params.id,
+        name: req.body.name,
+        username: req.body.username,
+        email: req.body.email
+      }
+
+      await userService.update(data, req.auth)
+
+      return res.status(204).send()
+    } catch (error) {
+      console.error(error)
+
+      return res.status(error.status || 500).json({
+        message: error.message
+      })
+    }
+  },
+
+  updateStatus: async (req, res) => {
+    try {
+      await validator.validate(req.body, {
+        users: 'array',
+        status: 'required|string|in:Active,Inactive,Disabled'
+      }, errorMessages)
+
+      const { users, status } = req.body
+
+      await userService.updateStatus(users, status, req.auth)
+
+      return res.status(204).send()
+    } catch (error) {
+      console.error(error)
+
+      return res.status(error.status || 500).json({
+        message: error.message
+      })
+    }
+  },
+
+  destroy: async (req, res) => {
+    try {
+      const { id } = req.params
+      await userService.destroy(id, req.auth)
+
+      return res.status(204).send()
+    } catch (error) {
+      console.error(error)
+
+      return res.status(error.status || 500).json({
+        message: error.message
+      })
+    }
   }
 }

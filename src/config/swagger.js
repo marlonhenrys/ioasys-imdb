@@ -241,6 +241,47 @@ module.exports = {
             description: 'Erro na requisição'
           }
         }
+      },
+      patch: {
+        tags: [
+          'Usuário'
+        ],
+        summary: 'Atualizar status de usuários existentes',
+        parameters: [
+          {
+            name: 'users, status',
+            in: 'body',
+            description: 'Lista de usuários que terão o status atualizado',
+            schema: {
+              type: 'object',
+              properties: {
+                users: {
+                  type: 'array',
+                  items: {
+                    type: 'integer'
+                  }
+                },
+                status: {
+                  type: 'string'
+                }
+              },
+              required: [
+                'status'
+              ]
+            }
+          }
+        ],
+        responses: {
+          204: {
+            description: 'Status atualizados com sucesso'
+          },
+          400: {
+            description: 'Erro na requisição'
+          },
+          422: {
+            description: 'Erro de validação dos dados'
+          }
+        }
       }
     },
     '/users/{id}': {
@@ -284,6 +325,77 @@ module.exports = {
           },
           400: {
             description: 'Erro na requisição'
+          }
+        }
+      },
+      put: {
+        tags: [
+          'Usuário'
+        ],
+        summary: 'Atualizar um usuário existente',
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            description: 'ID do usuário a ser atualizado',
+            required: true,
+            type: 'integer'
+          },
+          {
+            name: 'user',
+            in: 'body',
+            description: 'Dados do usuário que serão atualizados',
+            schema: {
+              type: 'object',
+              properties: {
+                name: {
+                  type: 'string'
+                },
+                email: {
+                  type: 'string'
+                },
+                username: {
+                  type: 'string'
+                }
+              }
+            }
+          }
+        ],
+        responses: {
+          204: {
+            description: 'Usuário atualizado com sucesso'
+          },
+          400: {
+            description: 'Erro na requisição'
+          },
+          422: {
+            description: 'Erro de validação dos dados'
+          }
+        }
+      },
+      delete: {
+        tags: [
+          'Usuário'
+        ],
+        summary: 'Excluir um usuário existente',
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            description: 'ID do usuário a ser excluído',
+            required: true,
+            type: 'integer'
+          }
+        ],
+        responses: {
+          204: {
+            description: 'Usuário excluído com sucesso'
+          },
+          400: {
+            description: 'Erro na requisição'
+          },
+          422: {
+            description: 'Erro de validação dos dados'
           }
         }
       }

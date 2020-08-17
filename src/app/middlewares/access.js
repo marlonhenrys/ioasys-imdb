@@ -19,6 +19,15 @@ module.exports = async (req, res, next) => {
       case `GET /users/${id}`:
         permission = userRole === role.ADM
         break
+      case `PUT /users/${id}`:
+        permission = true
+        break
+      case 'PATCH /users':
+        permission = true
+        break
+      case `DELETE /users/${id}`:
+        permission = true
+        break
       default:
         permission = false
         break

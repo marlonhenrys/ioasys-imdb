@@ -15,6 +15,7 @@ module.exports = (action, params, currentRole) => {
 
     case 'GET /films':
     case `GET /films/${id}`:
+    case 'GET /films/genres':
       permission = true
       break
   }

@@ -16,5 +16,8 @@ module.exports = {
     'users.array': 'É esperado um vetor com ID de usuários',
     'status.required': 'O status é obrigatório',
     'status.in': 'Status inválido'
+  },
+  film: {
+
   }
 }

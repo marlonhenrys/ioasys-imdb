@@ -11,10 +11,6 @@ class Film extends Model {
         type: DataTypes.TEXT,
         allowNull: false
       },
-      genre: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
       duration: {
         type: DataTypes.TIME,
         allowNull: false
@@ -34,6 +30,10 @@ class Film extends Model {
     }, {
       sequelize
     })
+  }
+
+  static associate (models) {
+    this.belongsToMany(models.Genre, { foreignKey: 'film_id', through: 'film_genres', as: 'genres' })
   }
 }
 

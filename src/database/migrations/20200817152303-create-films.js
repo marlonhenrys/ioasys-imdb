@@ -16,10 +16,6 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false
       },
-      genre: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
       duration: {
         type: Sequelize.TIME,
         allowNull: false

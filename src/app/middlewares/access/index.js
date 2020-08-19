@@ -6,14 +6,13 @@ module.exports = async (req, res, next) => {
   try {
     const action = req.method + ' ' + req.path
     const currentRole = req.auth.role
-    const { id } = req.params
 
     let permission = false
 
     if (req.path.startsWith('/users')) {
-      permission = userAcess(action, currentRole, id)
+      permission = userAcess(action, req.params, currentRole)
     } else if (req.path.startsWith('/films')) {
-      permission = filmAcess(action, currentRole, id)
+      permission = filmAcess(action, req.params, currentRole)
     }
 
     if (!permission) {

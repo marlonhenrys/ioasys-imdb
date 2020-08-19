@@ -1,6 +1,8 @@
 const { role } = require('../../utils/enumUser')
 
-module.exports = (action, currentRole, id) => {
+module.exports = (action, params, currentRole) => {
+  const { id } = params
+
   let permission = false
 
   switch (action) {

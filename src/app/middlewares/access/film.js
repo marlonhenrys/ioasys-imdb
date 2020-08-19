@@ -5,19 +5,14 @@ module.exports = (action, currentRole, id) => {
 
   switch (action) {
     case 'POST /films':
-      permission = currentRole === role.ADM
-      break
-    case 'GET /films':
-      permission = true
-      break
-    case `GET /films/${id}`:
-      permission = true
-      break
     case `PUT /films/${id}`:
-      permission = currentRole === role.ADM
-      break
     case `DELETE /films/${id}`:
       permission = currentRole === role.ADM
+      break
+
+    case 'GET /films':
+    case `GET /films/${id}`:
+      permission = true
       break
   }
 

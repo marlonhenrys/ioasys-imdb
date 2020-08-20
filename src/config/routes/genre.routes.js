@@ -4,8 +4,10 @@ const { auth, access } = require('../../app/middlewares')
 
 const routes = Router()
 
-routes.get('/films/genres', auth, access, GenreController.index)
-routes.post('/films/:filmId/genres', auth, access, GenreController.create)
-routes.delete('/films/:filmId/genres/:genreId', auth, access, GenreController.destroy)
+routes.get('/genres', auth, access, GenreController.index)
+routes.post('/genres', auth, access, GenreController.create)
+routes.get('/genres/:id', auth, access, GenreController.show)
+routes.put('/genres/:id', auth, access, GenreController.update)
+routes.delete('/genres/:id', auth, access, GenreController.destroy)
 
 module.exports = routes

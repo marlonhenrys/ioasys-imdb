@@ -1,6 +1,6 @@
-const { filmService, genreService } = require('../../../services')
-const validator = require('indicative/validator')
-const { genre: errorMessages } = require('../../../utils/errorMessages')
+const { genreService } = require('../../../services')
+// const validator = require('indicative/validator')
+// const { genre: errorMessages } = require('../../../utils/errorMessages')
 
 module.exports = {
 
@@ -19,39 +19,18 @@ module.exports = {
   },
 
   create: async (req, res) => {
-    try {
-      await validator.validate(req.body, {
-        name: 'required|string'
-      }, errorMessages)
 
-      const { filmId } = req.params
-      const genreName = req.body.name
+  },
 
-      await filmService.addGenre(filmId, genreName)
+  show: async (req, res) => {
 
-      return res.status(204).send()
-    } catch (error) {
-      console.error(error)
+  },
 
-      return res.status(error.status || 500).json({
-        message: error.message
-      })
-    }
+  update: async (req, res) => {
+
   },
 
   destroy: async (req, res) => {
-    try {
-      const { filmId, genreId } = req.params
 
-      await filmService.removeGenre(filmId, genreId)
-
-      return res.status(204).send()
-    } catch (error) {
-      console.error(error)
-
-      return res.status(error.status || 500).json({
-        message: error.message
-      })
-    }
   }
 }

@@ -25,7 +25,7 @@ module.exports = {
         name: 'required|string|min:3',
         password: 'required|string|min:6',
         role: 'required|string|in:Admin,Member',
-        username: 'required|string|unique:User|min:3|max:30',
+        username: 'required|string|alpha_numeric|unique:User|min:3|max:30',
         email: 'required|email|unique:User'
       }, errorMessages)
 
@@ -68,7 +68,7 @@ module.exports = {
     try {
       await validator.validate(req.body, {
         name: 'string|min:3',
-        username: 'string|unique:User|min:3|max:30',
+        username: 'string|alpha_numeric|unique:User|min:3|max:30',
         email: 'email|unique:User'
       }, errorMessages)
 

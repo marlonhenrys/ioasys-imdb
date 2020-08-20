@@ -7,7 +7,7 @@ const ApplicationError = require('../../utils/errorHandler')
 const { status } = require('../../utils/enumUser')
 
 module.exports = async (email, password) => {
-  const user = await userRepository.findByEmail(email)
+  const user = await userRepository.findByEmail(email.toLowerCase())
 
   if (!user) {
     throw new ApplicationError('Usuário não encontrado', 404)

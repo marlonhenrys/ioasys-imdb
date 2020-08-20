@@ -18,7 +18,16 @@ module.exports = {
     'status.in': 'Status inválido'
   },
   film: {
-
+    'name.required': 'O nome é obrigatório',
+    'synopsis.required': 'A sinopse é obrigatória',
+    'genres.required': 'A lista de gêneros é obrigatória',
+    'genres.array': 'É esperado um vetor com IDs de gêneros',
+    'genres.min': 'Deve ser informado pelo menos um gênero',
+    'language.required': 'O idioma é obrigatório',
+    'release.required': 'A data de lançamento é obrigatória',
+    'release.date': 'Formato de data inválido',
+    'duration.required': 'O tempo de duração é obrigatório',
+    'duration.regex': 'Formato de tempo inválido'
   },
   genre: {
 

@@ -23,6 +23,7 @@ module.exports = {
       await validator.validate(req.body, {
         name: 'required|string',
         synopsis: 'required|string',
+        genres: 'required|array|min:1',
         language: 'required|string',
         release: 'required|date',
         duration: [
@@ -35,6 +36,7 @@ module.exports = {
       const film = {
         name: req.body.name,
         synopsis: req.body.synopsis,
+        genres: req.body.genres,
         duration: req.body.duration,
         language: req.body.language,
         release: req.body.release
@@ -70,12 +72,12 @@ module.exports = {
   update: async (req, res) => {
     try {
       await validator.validate(req.body, {
-        name: 'required|string',
-        synopsis: 'required|string',
-        language: 'required|string',
-        release: 'required|date',
+        name: 'string',
+        synopsis: 'string',
+        genres: 'array|min:1',
+        language: 'string',
+        release: 'date',
         duration: [
-          validator.validations.required(),
           validator.validations.string(),
           validator.validations.regex([/^\d{1,2}[:][0-5][0-9]$/])
         ]
@@ -85,6 +87,7 @@ module.exports = {
         id: req.params.id,
         name: req.body.name,
         synopsis: req.body.synopsis,
+        genres: req.body.genres,
         duration: req.body.duration,
         language: req.body.language,
         release: req.body.release

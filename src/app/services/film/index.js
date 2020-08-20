@@ -1,7 +1,13 @@
-const addGenre = require('./addGenre')
-const removeGenre = require('./removeGenre')
+const create = require('./create')
+const findOne = require('./findOne')
+const findAll = require('./findAll')
+const update = require('./update')
+const destroy = require('./destroy')
 
 module.exports = {
-  addGenre,
-  removeGenre
+  create,
+  findOne,
+  findAll,
+  update,
+  destroy
 }

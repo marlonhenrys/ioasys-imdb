@@ -405,10 +405,249 @@ module.exports = {
       }
     },
     '/films': {
-
+      post: {
+        tags: [
+          'Filme'
+        ],
+        summary: 'Cadastrar um novo filme',
+        parameters: [
+          {
+            name: 'film',
+            in: 'body',
+            description: 'Dados do filme que será cadastrado',
+            schema: {
+              type: 'object',
+              properties: {
+                name: {
+                  type: 'string'
+                },
+                synopsis: {
+                  type: 'string'
+                },
+                genres: {
+                  type: 'array',
+                  items: {
+                    type: 'integer'
+                  }
+                },
+                duration: {
+                  type: 'string'
+                },
+                language: {
+                  type: 'string'
+                },
+                release: {
+                  type: 'string'
+                }
+              },
+              required: [
+                'name',
+                'synopsis',
+                'genres',
+                'duration',
+                'language',
+                'release'
+              ]
+            }
+          }
+        ],
+        responses: {
+          204: {
+            description: 'Filme cadastrado com sucesso'
+          },
+          400: {
+            description: 'Erro na requisição'
+          },
+          422: {
+            description: 'Erro de validação dos dados'
+          }
+        }
+      },
+      get: {
+        tags: [
+          'Filme'
+        ],
+        summary: 'Listar filmes cadastrados',
+        responses: {
+          200: {
+            description: 'Lista de filmes',
+            schema: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  name: {
+                    type: 'string'
+                  },
+                  synopsis: {
+                    type: 'string'
+                  },
+                  genres: {
+                    type: 'array',
+                    items: {
+                      type: 'string'
+                    }
+                  },
+                  duration: {
+                    type: 'string'
+                  },
+                  language: {
+                    type: 'string'
+                  },
+                  release: {
+                    type: 'string'
+                  }
+                }
+              }
+            }
+          },
+          400: {
+            description: 'Erro na requisição'
+          }
+        }
+      }
     },
     '/films/{id}': {
-
+      get: {
+        tags: [
+          'Filme'
+        ],
+        summary: 'Buscar um filme cadastrado',
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            description: 'ID do filme a ser pesquisado',
+            required: true,
+            type: 'integer'
+          }
+        ],
+        responses: {
+          200: {
+            description: 'Filme encontrado',
+            schema: {
+              type: 'object',
+              properties: {
+                id: {
+                  type: 'integer'
+                },
+                name: {
+                  type: 'string'
+                },
+                synopsis: {
+                  type: 'string'
+                },
+                genres: {
+                  type: 'array',
+                  items: {
+                    type: 'object',
+                    properties: {
+                      id: {
+                        type: 'integer'
+                      },
+                      name: {
+                        type: 'string'
+                      }
+                    }
+                  }
+                },
+                duration: {
+                  type: 'string'
+                },
+                language: {
+                  type: 'string'
+                },
+                release: {
+                  type: 'string'
+                }
+              }
+            }
+          },
+          400: {
+            description: 'Erro na requisição'
+          }
+        }
+      },
+      put: {
+        tags: [
+          'Filme'
+        ],
+        summary: 'Atualizar um filme cadastrado',
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            description: 'ID do filme a ser atualizado',
+            required: true,
+            type: 'integer'
+          },
+          {
+            name: 'film',
+            in: 'body',
+            description: 'Dados do filme que serão atualizados',
+            schema: {
+              type: 'object',
+              properties: {
+                name: {
+                  type: 'string'
+                },
+                synopsis: {
+                  type: 'string'
+                },
+                genres: {
+                  type: 'array',
+                  items: {
+                    type: 'integer'
+                  }
+                },
+                duration: {
+                  type: 'string'
+                },
+                language: {
+                  type: 'string'
+                },
+                release: {
+                  type: 'string'
+                }
+              }
+            }
+          }
+        ],
+        responses: {
+          204: {
+            description: 'Filme atualizado com sucesso'
+          },
+          400: {
+            description: 'Erro na requisição'
+          },
+          422: {
+            description: 'Erro de validação dos dados'
+          }
+        }
+      },
+      delete: {
+        tags: [
+          'Filme'
+        ],
+        summary: 'Excluir um filme cadastrado',
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            description: 'ID do filme a ser excluído',
+            required: true,
+            type: 'integer'
+          }
+        ],
+        responses: {
+          204: {
+            description: 'Filme excluído com sucesso'
+          },
+          400: {
+            description: 'Erro na requisição'
+          }
+        }
+      }
     }
   },
   securityDefinitions: {

@@ -7,8 +7,8 @@ module.exports = async (data, auth) => {
     const user = await userRepository.findById(data.id)
 
     if (data.name) { user.name = data.name }
-    if (data.username) { user.username = data.username }
-    if (data.email) { user.email = data.email }
+    if (data.username) { user.username = data.username.toLowerCase() }
+    if (data.email) { user.email = data.email.toLowerCase() }
 
     await user.save()
   } else {

@@ -1,6 +1,4 @@
 const { genreService } = require('../../../services')
-// const validator = require('indicative/validator')
-// const { genre: errorMessages } = require('../../../utils/errorMessages')
 
 module.exports = {
 

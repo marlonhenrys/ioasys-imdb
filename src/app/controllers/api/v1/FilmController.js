@@ -1,18 +1,21 @@
 const { filmService } = require('../../../services')
 const validator = require('indicative/validator')
 const { film: errorMessages } = require('../../../utils/errorMessages')
+const HttpStatus = require('http-status-codes')
 
 module.exports = {
 
   index: async (req, res) => {
     try {
-      const films = await filmService.findAll()
+      const { page, limit, ...filters } = req.query
 
-      return res.status(200).json(films)
+      const films = await filmService.findAll(page, limit, filters)
+
+      return res.status(HttpStatus.OK).json(films)
     } catch (error) {
       console.error(error)
 
-      return res.status(error.status || 500).json({
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
         message: error.message
       })
     }
@@ -44,11 +47,11 @@ module.exports = {
 
       await filmService.create(film)
 
-      return res.status(204).send()
+      return res.status(HttpStatus.NO_CONTENT).send()
     } catch (error) {
       console.error(error)
 
-      return res.status(error.status || 500).json({
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
         message: error.message
       })
     }
@@ -59,11 +62,11 @@ module.exports = {
       const { id } = req.params
       const film = await filmService.findOne(id)
 
-      return res.status(200).json(film)
+      return res.status(HttpStatus.OK).json(film)
     } catch (error) {
       console.error(error)
 
-      return res.status(error.status || 500).json({
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
         message: error.message
       })
     }
@@ -95,11 +98,11 @@ module.exports = {
 
       await filmService.update(data)
 
-      return res.status(204).send()
+      return res.status(HttpStatus.NO_CONTENT).send()
     } catch (error) {
       console.error(error)
 
-      return res.status(error.status || 500).json({
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
         message: error.message
       })
     }
@@ -110,11 +113,11 @@ module.exports = {
       const { id } = req.params
       await filmService.destroy(id)
 
-      return res.status(204).send()
+      return res.status(HttpStatus.NO_CONTENT).send()
     } catch (error) {
       console.error(error)
 
-      return res.status(error.status || 500).json({
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
         message: error.message
       })
     }

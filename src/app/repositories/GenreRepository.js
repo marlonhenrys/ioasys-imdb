@@ -4,7 +4,9 @@ module.exports = {
 
   findById: id => Genre.findByPk(id),
 
-  findAll: () => Genre.findAll({
+  findAll: (options, conditions) => Genre.findAll({
+    options,
+    where: conditions.genre,
     attributes: {
       exclude: ['createdAt', 'updatedAt']
     }

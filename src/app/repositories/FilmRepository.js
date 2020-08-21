@@ -17,13 +17,15 @@ module.exports = {
     }
   }),
 
-  findAll: () => Film.findAll({
+  findAll: (options, conditions) => Film.findAll({
+    options,
     include: {
       association: 'genres',
       attributes: ['name'],
       through: {
         attributes: []
-      }
+      },
+      where: conditions.genre
     },
     attributes: {
       exclude: ['createdAt', 'updatedAt']

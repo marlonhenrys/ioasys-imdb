@@ -1,19 +1,21 @@
 const { userService } = require('../../../services')
 const validator = require('indicative/validator')
 const { user: errorMessages } = require('../../../utils/errorMessages')
+const HttpStatus = require('http-status-codes')
 
 module.exports = {
 
   index: async (req, res) => {
     try {
-      const { role } = req.query
-      const users = await userService.findAll(role)
+      const { page, limit, ...filters } = req.query
 
-      return res.status(200).json(users)
+      const users = await userService.findAll(page, limit, filters)
+
+      return res.status(HttpStatus.OK).json(users)
     } catch (error) {
       console.error(error)
 
-      return res.status(error.status || 500).json({
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
         message: error.message
       })
     }
@@ -39,11 +41,11 @@ module.exports = {
 
       await userService.create(user)
 
-      return res.status(204).send()
+      return res.status(HttpStatus.NO_CONTENT).send()
     } catch (error) {
       console.error(error)
 
-      return res.status(error.status || 500).json({
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
         message: error.message
       })
     }
@@ -54,11 +56,11 @@ module.exports = {
       const { id } = req.params
       const user = await userService.findOne(id)
 
-      return res.status(200).json(user)
+      return res.status(HttpStatus.OK).json(user)
     } catch (error) {
       console.error(error)
 
-      return res.status(error.status || 500).json({
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
         message: error.message
       })
     }
@@ -81,11 +83,11 @@ module.exports = {
 
       await userService.update(data, req.auth)
 
-      return res.status(204).send()
+      return res.status(HttpStatus.NO_CONTENT).send()
     } catch (error) {
       console.error(error)
 
-      return res.status(error.status || 500).json({
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
         message: error.message
       })
     }
@@ -102,11 +104,11 @@ module.exports = {
 
       await userService.updateStatus(users, status, req.auth)
 
-      return res.status(204).send()
+      return res.status(HttpStatus.NO_CONTENT).send()
     } catch (error) {
       console.error(error)
 
-      return res.status(error.status || 500).json({
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
         message: error.message
       })
     }
@@ -117,11 +119,11 @@ module.exports = {
       const { id } = req.params
       await userService.destroy(id, req.auth)
 
-      return res.status(204).send()
+      return res.status(HttpStatus.NO_CONTENT).send()
     } catch (error) {
       console.error(error)
 
-      return res.status(error.status || 500).json({
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
         message: error.message
       })
     }

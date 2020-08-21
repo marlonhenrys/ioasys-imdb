@@ -1,16 +1,19 @@
 const { genreService } = require('../../../services')
+const HttpStatus = require('http-status-codes')
 
 module.exports = {
 
   index: async (req, res) => {
     try {
-      const genres = await genreService.findAll()
+      const { page, limit, ...filters } = req.query
 
-      return res.status(200).json(genres)
+      const genres = await genreService.findAll(page, limit, filters)
+
+      return res.status(HttpStatus.OK).json(genres)
     } catch (error) {
       console.error(error)
 
-      return res.status(error.status || 500).json({
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
         message: error.message
       })
     }

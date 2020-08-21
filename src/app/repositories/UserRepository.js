@@ -19,9 +19,8 @@ module.exports = {
     }
   }),
 
-  findAll: (offset, limit, conditions) => User.findAll({
-    offset,
-    limit,
+  findAll: (options, conditions) => User.findAll({
+    options,
     where: conditions.user,
     attributes: {
       exclude: ['password', 'createdAt', 'updatedAt']

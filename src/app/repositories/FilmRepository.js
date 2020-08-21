@@ -17,9 +17,8 @@ module.exports = {
     }
   }),
 
-  findAll: (offset, limit, conditions) => Film.findAll({
-    offset,
-    limit,
+  findAll: (options, conditions) => Film.findAll({
+    options,
     include: {
       association: 'genres',
       attributes: ['name'],

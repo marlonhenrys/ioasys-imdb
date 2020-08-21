@@ -1,9 +1,13 @@
 const validator = require('indicative/validator')
 const ApplicationError = require('../app/utils/errorHandler')
+const HttpStatus = require('http-status-codes')
 
 class MyCustomFormatter {
   addError (error, field, rule, args) {
-    const status = rule.startsWith('required') ? 400 : 422
+    const status = rule.startsWith('required')
+      ? HttpStatus.BAD_REQUEST
+      : HttpStatus.UNPROCESSABLE_ENTITY
+
     throw new ApplicationError(error, status)
   }
 

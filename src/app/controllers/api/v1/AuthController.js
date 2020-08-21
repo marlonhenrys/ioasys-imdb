@@ -1,6 +1,7 @@
 const { authService, userService } = require('../../../services')
 const validator = require('indicative/validator')
 const { user: errorMessages } = require('../../../utils/errorMessages')
+const HttpStatus = require('http-status-codes')
 
 module.exports = {
 
@@ -22,11 +23,11 @@ module.exports = {
 
       await userService.create(user)
 
-      return res.status(204).send()
+      return res.status(HttpStatus.NO_CONTENT).send()
     } catch (error) {
       console.error(error)
 
-      return res.status(error.status || 500).json({
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
         message: error.message
       })
     }
@@ -43,11 +44,11 @@ module.exports = {
 
       const user = await authService.signin(email, password)
 
-      return res.status(200).json(user)
+      return res.status(HttpStatus.OK).json(user)
     } catch (error) {
       console.error(error)
 
-      return res.status(error.status || 500).json({
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
         message: error.message
       })
     }

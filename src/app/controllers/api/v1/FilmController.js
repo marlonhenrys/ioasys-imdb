@@ -6,7 +6,9 @@ module.exports = {
 
   index: async (req, res) => {
     try {
-      const films = await filmService.findAll()
+      const { page = 1, limit = 10, ...filters } = req.query
+
+      const films = await filmService.findAll(page, limit, filters)
 
       return res.status(200).json(films)
     } catch (error) {

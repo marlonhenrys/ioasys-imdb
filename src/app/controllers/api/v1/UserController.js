@@ -6,8 +6,9 @@ module.exports = {
 
   index: async (req, res) => {
     try {
-      const { role } = req.query
-      const users = await userService.findAll(role)
+      const { page = 1, limit = 10, ...filters } = req.query
+
+      const users = await userService.findAll(page, limit, filters)
 
       return res.status(200).json(users)
     } catch (error) {

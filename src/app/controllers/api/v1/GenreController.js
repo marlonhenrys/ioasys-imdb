@@ -4,7 +4,9 @@ module.exports = {
 
   index: async (req, res) => {
     try {
-      const genres = await genreService.findAll()
+      const { page = 1, limit = 10, ...filters } = req.query
+
+      const genres = await genreService.findAll(page, limit, filters)
 
       return res.status(200).json(genres)
     } catch (error) {

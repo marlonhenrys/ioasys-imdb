@@ -20,6 +20,10 @@ module.exports = {
     {
       name: 'Filme',
       description: 'CRUD'
+    },
+    {
+      name: 'Gênero',
+      description: 'CRUD'
     }
   ],
   schemes: [
@@ -645,6 +649,87 @@ module.exports = {
           },
           400: {
             description: 'Erro na requisição'
+          }
+        }
+      }
+    },
+    '/genres': {
+      post: {
+        tags: [
+          'Gênero'
+        ],
+        summary: 'Cadastrar um novo gênero',
+        parameters: [
+          {
+            name: 'genre',
+            in: 'body',
+            description: 'Dados do gênero que será cadastrado',
+            schema: {
+              type: 'object',
+              properties: {
+                name: {
+                  type: 'string'
+                }
+              },
+              required: [
+                'name'
+              ]
+            }
+          }
+        ],
+        responses: {
+          204: {
+            description: 'Gênero cadastrado com sucesso'
+          },
+          400: {
+            description: 'Erro na requisição'
+          },
+          422: {
+            description: 'Erro de validação dos dados'
+          }
+        }
+      }
+    },
+    '/genres/{id}': {
+      put: {
+        tags: [
+          'Gênero'
+        ],
+        summary: 'Atualizar um gênero cadastrado',
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            description: 'ID do gênero a ser atualizado',
+            required: true,
+            type: 'integer'
+          },
+          {
+            name: 'genre',
+            in: 'body',
+            description: 'Dados do gênero que serão atualizados',
+            schema: {
+              type: 'object',
+              properties: {
+                name: {
+                  type: 'string'
+                }
+              },
+              required: [
+                'name'
+              ]
+            }
+          }
+        ],
+        responses: {
+          204: {
+            description: 'Gênero atualizado com sucesso'
+          },
+          400: {
+            description: 'Erro na requisição'
+          },
+          422: {
+            description: 'Erro de validação dos dados'
           }
         }
       }

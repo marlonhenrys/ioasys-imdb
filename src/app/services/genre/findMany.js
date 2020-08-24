@@ -1,5 +1,6 @@
 const genreRepository = require('../../repositories/GenreRepository')
 const ApplicationError = require('../../utils/errorHandler')
+const HttpStatus = require('http-status-codes')
 
 module.exports = async genresIds => {
   const genres = []
@@ -8,7 +9,7 @@ module.exports = async genresIds => {
     const genre = await genreRepository.findById(genreId)
 
     if (!genre) {
-      throw new ApplicationError(`Gênero de ID ${genreId} não encontrado`, 404)
+      throw new ApplicationError(`Gênero de ID ${genreId} não encontrado`, HttpStatus.NOT_FOUND)
     }
 
     genres.push(genre)

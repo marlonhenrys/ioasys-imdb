@@ -3,6 +3,7 @@ require('dotenv').config()
 const jwt = require('jsonwebtoken')
 const userRepository = require('../repositories/UserRepository')
 const ApplicationError = require('../utils/errorHandler')
+const HttpStatus = require('http-status-codes')
 const { status } = require('../utils/enumUser')
 
 module.exports = async (req, res, next) => {
@@ -10,36 +11,36 @@ module.exports = async (req, res, next) => {
     const authHeader = req.headers.authorization
 
     if (!authHeader) {
-      throw new ApplicationError('Nenhum token fornecido', 401)
+      throw new ApplicationError('Nenhum token fornecido', HttpStatus.UNAUTHORIZED)
     }
 
     const parts = authHeader.split(' ')
 
     if (!parts.length === 2) {
-      throw new ApplicationError('Erro de token', 401)
+      throw new ApplicationError('Erro de token', HttpStatus.UNAUTHORIZED)
     }
 
     const [scheme, token] = parts
 
     if (!/^Bearer$/i.test(scheme)) {
-      throw new ApplicationError('Token mal formatado', 401)
+      throw new ApplicationError('Token mal formatado', HttpStatus.UNAUTHORIZED)
     }
 
     await jwt.verify(token, process.env.APP_KEY, async (error, decoded) => {
       if (error) {
-        throw new ApplicationError('Token inválido', 401)
+        throw new ApplicationError('Token inválido', HttpStatus.UNAUTHORIZED)
       }
 
       const user = await userRepository.findById(decoded.user_id)
 
       if (!user) {
-        throw new ApplicationError('Não foi possível autenticar o usuário', 401)
+        throw new ApplicationError('Não foi possível autenticar o usuário', HttpStatus.UNAUTHORIZED)
       } else if (user.status === status.INT) {
-        throw new ApplicationError('Este usuário está desabilitado', 403)
+        throw new ApplicationError('Este usuário está desabilitado', HttpStatus.FORBIDDEN)
       } else if (user.status === status.DIS) {
-        throw new ApplicationError('Este usuário foi desabilitado por um administrador', 403)
+        throw new ApplicationError('Este usuário foi desabilitado por um administrador', HttpStatus.FORBIDDEN)
       } else if (user.status === status.DEL) {
-        throw new ApplicationError('Este usuário foi excluído', 403)
+        throw new ApplicationError('Este usuário foi excluído', HttpStatus.FORBIDDEN)
       }
 
       req.auth = {
@@ -54,7 +55,7 @@ module.exports = async (req, res, next) => {
   } catch (error) {
     console.error(error)
 
-    return res.status(error.status || 500).json({
+    return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
       message: error.message
     })
   }

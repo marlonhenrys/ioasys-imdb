@@ -34,6 +34,7 @@ class Film extends Model {
 
   static associate (models) {
     this.belongsToMany(models.Genre, { foreignKey: 'film_id', through: 'film_genres', as: 'genres' })
+    this.belongsToMany(models.Person, { foreignKey: 'film_id', through: 'participations', as: 'persons' })
   }
 }
 

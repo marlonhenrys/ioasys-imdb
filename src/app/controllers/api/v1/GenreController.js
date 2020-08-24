@@ -43,10 +43,6 @@ module.exports = {
     }
   },
 
-  show: async (req, res) => {
-
-  },
-
   update: async (req, res) => {
     try {
       await validator.validate(req.body, {
@@ -71,6 +67,18 @@ module.exports = {
   },
 
   destroy: async (req, res) => {
+    try {
+      const { id } = req.params
 
+      await genreService.destroy(id)
+
+      return res.status(HttpStatus.NO_CONTENT).send()
+    } catch (error) {
+      console.error(error)
+
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
+        message: error.message
+      })
+    }
   }
 }

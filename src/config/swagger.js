@@ -480,6 +480,9 @@ module.exports = {
               items: {
                 type: 'object',
                 properties: {
+                  id: {
+                    type: 'integer'
+                  },
                   name: {
                     type: 'string'
                   },
@@ -688,6 +691,34 @@ module.exports = {
             description: 'Erro de validação dos dados'
           }
         }
+      },
+      get: {
+        tags: [
+          'Gênero'
+        ],
+        summary: 'Listar gêneros cadastrados',
+        responses: {
+          200: {
+            description: 'Lista de gêneros',
+            schema: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  id: {
+                    type: 'integer'
+                  },
+                  name: {
+                    type: 'string'
+                  }
+                }
+              }
+            }
+          },
+          400: {
+            description: 'Erro na requisição'
+          }
+        }
       }
     },
     '/genres/{id}': {
@@ -730,6 +761,29 @@ module.exports = {
           },
           422: {
             description: 'Erro de validação dos dados'
+          }
+        }
+      },
+      delete: {
+        tags: [
+          'Gênero'
+        ],
+        summary: 'Excluir um gênero cadastrado',
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            description: 'ID do gênero a ser excluído',
+            required: true,
+            type: 'integer'
+          }
+        ],
+        responses: {
+          204: {
+            description: 'Gênero excluído com sucesso'
+          },
+          400: {
+            description: 'Erro na requisição'
           }
         }
       }

@@ -7,7 +7,12 @@ module.exports = (action, params, currentRole) => {
   switch (action) {
     case 'POST /genres':
     case `PUT /genres/${id}`:
+    case `DELETE /genres/${id}`:
       permission = currentRole === role.ADM
+      break
+
+    case 'GET /genres':
+      permission = true
       break
   }
 

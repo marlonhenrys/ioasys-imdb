@@ -31,5 +31,8 @@ module.exports = {
   },
   genre: {
 
+  },
+  person: {
+    'name.required': 'O nome é obrigatório'
   }
 }

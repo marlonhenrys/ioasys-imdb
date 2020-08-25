@@ -20,6 +20,10 @@ module.exports = {
     {
       name: 'Filme',
       description: 'CRUD'
+    },
+    {
+      name: 'Pessoa',
+      description: 'CRUD'
     }
   ],
   schemes: [
@@ -282,6 +286,9 @@ module.exports = {
           400: {
             description: 'Erro na requisição'
           },
+          404: {
+            description: 'Usuário não encontrado'
+          },
           422: {
             description: 'Erro de validação dos dados'
           }
@@ -329,6 +336,9 @@ module.exports = {
           },
           400: {
             description: 'Erro na requisição'
+          },
+          404: {
+            description: 'Usuário não encontrado'
           }
         }
       },
@@ -372,6 +382,9 @@ module.exports = {
           400: {
             description: 'Erro na requisição'
           },
+          404: {
+            description: 'Usuário não encontrado'
+          },
           422: {
             description: 'Erro de validação dos dados'
           }
@@ -397,6 +410,9 @@ module.exports = {
           },
           400: {
             description: 'Erro na requisição'
+          },
+          404: {
+            description: 'Usuário não encontrado'
           },
           422: {
             description: 'Erro de validação dos dados'
@@ -565,6 +581,9 @@ module.exports = {
           },
           400: {
             description: 'Erro na requisição'
+          },
+          404: {
+            description: 'Filme não encontrado'
           }
         }
       },
@@ -620,6 +639,9 @@ module.exports = {
           400: {
             description: 'Erro na requisição'
           },
+          404: {
+            description: 'Filme não encontrado'
+          },
           422: {
             description: 'Erro de validação dos dados'
           }
@@ -645,6 +667,185 @@ module.exports = {
           },
           400: {
             description: 'Erro na requisição'
+          },
+          404: {
+            description: 'Filme não encontrado'
+          }
+        }
+      }
+    },
+
+    '/persons': {
+      post: {
+        tags: [
+          'Pessoa'
+        ],
+        summary: 'Cadastrar uma nova pessoa',
+        parameters: [
+          {
+            name: 'person',
+            in: 'body',
+            description: 'Dados da pessoa que será cadastrada',
+            schema: {
+              type: 'object',
+              properties: {
+                name: {
+                  type: 'string'
+                },
+                biography: {
+                  type: 'string'
+                }
+              },
+              required: [
+                'name'
+              ]
+            }
+          }
+        ],
+        responses: {
+          204: {
+            description: 'Pessoa cadastrada com sucesso'
+          },
+          400: {
+            description: 'Erro na requisição'
+          },
+          422: {
+            description: 'Erro de validação dos dados'
+          }
+        }
+      },
+      get: {
+        tags: [
+          'Pessoa'
+        ],
+        summary: 'Listar pessoas cadastradas',
+        responses: {
+          200: {
+            description: 'Lista de pessoas',
+            schema: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  id: {
+                    type: 'integer'
+                  },
+                  name: {
+                    type: 'string'
+                  }
+                }
+              }
+            }
+          },
+          400: {
+            description: 'Erro na requisição'
+          }
+        }
+      }
+    },
+    '/persons/{id}': {
+      get: {
+        tags: [
+          'Pessoa'
+        ],
+        summary: 'Buscar uma pessoa cadastrada',
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            description: 'ID da pessoa a ser pesquisada',
+            required: true,
+            type: 'integer'
+          }
+        ],
+        responses: {
+          200: {
+            description: 'Pessoa encontrada',
+            schema: {
+              type: 'object',
+              properties: {
+                id: {
+                  type: 'integer'
+                },
+                name: {
+                  type: 'string'
+                },
+                biography: {
+                  type: 'string'
+                }
+              }
+            }
+          },
+          404: {
+            description: 'Pessoa não encontrada'
+          }
+        }
+      },
+      put: {
+        tags: [
+          'Pessoa'
+        ],
+        summary: 'Atualizar uma pessoa cadastrada',
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            description: 'ID da pessoa a ser atualizada',
+            required: true,
+            type: 'integer'
+          },
+          {
+            name: 'person',
+            in: 'body',
+            description: 'Dados da pessoa que serão atualizados',
+            schema: {
+              type: 'object',
+              properties: {
+                name: {
+                  type: 'string'
+                },
+                biography: {
+                  type: 'string'
+                }
+              }
+            }
+          }
+        ],
+        responses: {
+          204: {
+            description: 'Pessoa atualizada com sucesso'
+          },
+          400: {
+            description: 'Erro na requisição'
+          },
+          404: {
+            description: 'Pessoa não encontrada'
+          },
+          422: {
+            description: 'Erro de validação dos dados'
+          }
+        }
+      },
+      delete: {
+        tags: [
+          'Pessoa'
+        ],
+        summary: 'Excluir uma pessoa cadastrada',
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            description: 'ID da pessoa a ser excluída',
+            required: true,
+            type: 'integer'
+          }
+        ],
+        responses: {
+          204: {
+            description: 'Pessoa excluída com sucesso'
+          },
+          404: {
+            description: 'Pessoa não encontrada'
           }
         }
       }

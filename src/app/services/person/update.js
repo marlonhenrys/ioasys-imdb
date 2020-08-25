@@ -9,8 +9,12 @@ module.exports = async data => {
     throw new ApplicationError('Pessoa não encontrada', HttpStatus.NOT_FOUND)
   }
 
-  if (data.name) { person.name = data.name }
-  if (data.biography) { person.biography = data.biography }
+  if (data.name) {
+    person.name = data.name
+  }
+  if (data.biography) {
+    person.biography = data.biography
+  }
 
   await person.save()
 }

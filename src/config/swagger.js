@@ -10,19 +10,19 @@ module.exports = {
   basePath: '/api/v1',
   tags: [
     {
-      name: 'Autenticação',
-      description: 'Cadastro / Login'
+      name: 'Authentication',
+      description: 'Sign Up / Sign In'
     },
     {
-      name: 'Usuário',
+      name: 'User',
       description: 'CRUD'
     },
     {
-      name: 'Filme',
+      name: 'Film',
       description: 'CRUD'
     },
     {
-      name: 'Pessoa',
+      name: 'Person',
       description: 'CRUD'
     }
   ],
@@ -40,14 +40,14 @@ module.exports = {
     '/signup': {
       post: {
         tags: [
-          'Autenticação'
+          'Authentication'
         ],
-        summary: 'Cadastrar um usuário',
+        summary: 'Register user',
         parameters: [
           {
             name: 'user',
             in: 'body',
-            description: 'Dados do usuário que será criado',
+            description: 'User data',
             schema: {
               type: 'object',
               properties: {
@@ -75,13 +75,13 @@ module.exports = {
         ],
         responses: {
           204: {
-            description: 'Usuário criado'
+            description: 'Registered user successfully'
           },
           400: {
-            description: 'Erro na requisição'
+            description: 'Bad request'
           },
           422: {
-            description: 'Erro de validação dos dados'
+            description: 'Data validation error'
           }
         }
       }
@@ -89,14 +89,14 @@ module.exports = {
     '/signin': {
       post: {
         tags: [
-          'Autenticação'
+          'Authentication'
         ],
-        summary: 'Autenticar um usuário',
+        summary: 'Authenticate user',
         parameters: [
           {
             name: 'credentials',
             in: 'body',
-            description: 'Credenciais de acesso',
+            description: 'Access credentials',
             schema: {
               type: 'object',
               properties: {
@@ -116,7 +116,7 @@ module.exports = {
         ],
         responses: {
           200: {
-            description: 'Usuário autenticado',
+            description: 'Authenticated user',
             schema: {
               type: 'object',
               properties: {
@@ -148,7 +148,7 @@ module.exports = {
             }
           },
           401: {
-            description: 'Não autorizado'
+            description: 'Unauthorized'
           }
         }
       }
@@ -156,14 +156,14 @@ module.exports = {
     '/users': {
       post: {
         tags: [
-          'Usuário'
+          'User'
         ],
-        summary: 'Criar um novo usuário',
+        summary: 'Create user',
         parameters: [
           {
             name: 'user',
             in: 'body',
-            description: 'Dados do usuário que será criado',
+            description: 'User data',
             schema: {
               type: 'object',
               properties: {
@@ -195,32 +195,32 @@ module.exports = {
         ],
         responses: {
           204: {
-            description: 'Usuário criado'
+            description: 'User created successfully'
           },
           400: {
-            description: 'Erro na requisição'
+            description: 'Bad request'
           },
           422: {
-            description: 'Erro de validação dos dados'
+            description: 'Data validation error'
           }
         }
       },
       get: {
         tags: [
-          'Usuário'
+          'User'
         ],
-        summary: 'Listar usuários existentes',
+        summary: 'List users',
         parameters: [
           {
             name: 'role',
             in: 'query',
-            description: 'Tipo dos usuários a serem listados',
+            description: 'User role',
             type: 'string'
           }
         ],
         responses: {
           200: {
-            description: 'Lista de usuários',
+            description: 'User list',
             schema: {
               type: 'array',
               items: {
@@ -246,20 +246,20 @@ module.exports = {
             }
           },
           400: {
-            description: 'Erro na requisição'
+            description: 'Bad request'
           }
         }
       },
       patch: {
         tags: [
-          'Usuário'
+          'User'
         ],
-        summary: 'Atualizar status de usuários existentes',
+        summary: 'Update status',
         parameters: [
           {
             name: 'users, status',
             in: 'body',
-            description: 'Lista de usuários que terão o status atualizado',
+            description: 'User list',
             schema: {
               type: 'object',
               properties: {
@@ -281,16 +281,16 @@ module.exports = {
         ],
         responses: {
           204: {
-            description: 'Status atualizados com sucesso'
+            description: 'Updated status successfully'
           },
           400: {
-            description: 'Erro na requisição'
+            description: 'Bad request'
           },
           404: {
-            description: 'Usuário não encontrado'
+            description: 'User not found'
           },
           422: {
-            description: 'Erro de validação dos dados'
+            description: 'Data validation error'
           }
         }
       }
@@ -298,21 +298,21 @@ module.exports = {
     '/users/{id}': {
       get: {
         tags: [
-          'Usuário'
+          'User'
         ],
-        summary: 'Buscar um usuário existente',
+        summary: 'Find user',
         parameters: [
           {
             name: 'id',
             in: 'path',
-            description: 'ID do usuário a ser pesquisado',
+            description: 'User ID',
             required: true,
             type: 'integer'
           }
         ],
         responses: {
           200: {
-            description: 'Usuário encontrado',
+            description: 'User found',
             schema: {
               type: 'object',
               properties: {
@@ -335,30 +335,30 @@ module.exports = {
             }
           },
           400: {
-            description: 'Erro na requisição'
+            description: 'Bad request'
           },
           404: {
-            description: 'Usuário não encontrado'
+            description: 'User not found'
           }
         }
       },
       put: {
         tags: [
-          'Usuário'
+          'User'
         ],
-        summary: 'Atualizar um usuário existente',
+        summary: 'Update user',
         parameters: [
           {
             name: 'id',
             in: 'path',
-            description: 'ID do usuário a ser atualizado',
+            description: 'User ID',
             required: true,
             type: 'integer'
           },
           {
             name: 'user',
             in: 'body',
-            description: 'Dados do usuário que serão atualizados',
+            description: 'User data',
             schema: {
               type: 'object',
               properties: {
@@ -377,45 +377,45 @@ module.exports = {
         ],
         responses: {
           204: {
-            description: 'Usuário atualizado com sucesso'
+            description: 'Updated user successfully'
           },
           400: {
-            description: 'Erro na requisição'
+            description: 'Bad request'
           },
           404: {
-            description: 'Usuário não encontrado'
+            description: 'User not found'
           },
           422: {
-            description: 'Erro de validação dos dados'
+            description: 'Data validation error'
           }
         }
       },
       delete: {
         tags: [
-          'Usuário'
+          'User'
         ],
-        summary: 'Excluir um usuário existente',
+        summary: 'Delete user',
         parameters: [
           {
             name: 'id',
             in: 'path',
-            description: 'ID do usuário a ser excluído',
+            description: 'User ID',
             required: true,
             type: 'integer'
           }
         ],
         responses: {
           204: {
-            description: 'Usuário excluído com sucesso'
+            description: 'User deleted successfully'
           },
           400: {
-            description: 'Erro na requisição'
+            description: 'Bad request'
           },
           404: {
-            description: 'Usuário não encontrado'
+            description: 'User not found'
           },
           422: {
-            description: 'Erro de validação dos dados'
+            description: 'Data validation error'
           }
         }
       }
@@ -423,14 +423,14 @@ module.exports = {
     '/films': {
       post: {
         tags: [
-          'Filme'
+          'Film'
         ],
-        summary: 'Cadastrar um novo filme',
+        summary: 'Create film',
         parameters: [
           {
             name: 'film',
             in: 'body',
-            description: 'Dados do filme que será cadastrado',
+            description: 'Film data',
             schema: {
               type: 'object',
               properties: {
@@ -469,24 +469,24 @@ module.exports = {
         ],
         responses: {
           204: {
-            description: 'Filme cadastrado com sucesso'
+            description: 'Film created successfully'
           },
           400: {
-            description: 'Erro na requisição'
+            description: 'Bad request'
           },
           422: {
-            description: 'Erro de validação dos dados'
+            description: 'Data validation error'
           }
         }
       },
       get: {
         tags: [
-          'Filme'
+          'Film'
         ],
-        summary: 'Listar filmes cadastrados',
+        summary: 'List films',
         responses: {
           200: {
-            description: 'Lista de filmes',
+            description: 'Film list',
             schema: {
               type: 'array',
               items: {
@@ -518,7 +518,7 @@ module.exports = {
             }
           },
           400: {
-            description: 'Erro na requisição'
+            description: 'Bad request'
           }
         }
       }
@@ -526,21 +526,21 @@ module.exports = {
     '/films/{id}': {
       get: {
         tags: [
-          'Filme'
+          'Film'
         ],
-        summary: 'Buscar um filme cadastrado',
+        summary: 'Find film',
         parameters: [
           {
             name: 'id',
             in: 'path',
-            description: 'ID do filme a ser pesquisado',
+            description: 'Film ID',
             required: true,
             type: 'integer'
           }
         ],
         responses: {
           200: {
-            description: 'Filme encontrado',
+            description: 'Film found',
             schema: {
               type: 'object',
               properties: {
@@ -580,30 +580,30 @@ module.exports = {
             }
           },
           400: {
-            description: 'Erro na requisição'
+            description: 'Bad request'
           },
           404: {
-            description: 'Filme não encontrado'
+            description: 'Film not found'
           }
         }
       },
       put: {
         tags: [
-          'Filme'
+          'Film'
         ],
-        summary: 'Atualizar um filme cadastrado',
+        summary: 'Update film',
         parameters: [
           {
             name: 'id',
             in: 'path',
-            description: 'ID do filme a ser atualizado',
+            description: 'Film ID',
             required: true,
             type: 'integer'
           },
           {
             name: 'film',
             in: 'body',
-            description: 'Dados do filme que serão atualizados',
+            description: 'Film data',
             schema: {
               type: 'object',
               properties: {
@@ -634,42 +634,42 @@ module.exports = {
         ],
         responses: {
           204: {
-            description: 'Filme atualizado com sucesso'
+            description: 'Film updated successfully'
           },
           400: {
-            description: 'Erro na requisição'
+            description: 'Bad request'
           },
           404: {
-            description: 'Filme não encontrado'
+            description: 'Film not found'
           },
           422: {
-            description: 'Erro de validação dos dados'
+            description: 'Data validation error'
           }
         }
       },
       delete: {
         tags: [
-          'Filme'
+          'Film'
         ],
-        summary: 'Excluir um filme cadastrado',
+        summary: 'Delete film',
         parameters: [
           {
             name: 'id',
             in: 'path',
-            description: 'ID do filme a ser excluído',
+            description: 'Film ID',
             required: true,
             type: 'integer'
           }
         ],
         responses: {
           204: {
-            description: 'Filme excluído com sucesso'
+            description: 'Film deleted successfully'
           },
           400: {
-            description: 'Erro na requisição'
+            description: 'Bad request'
           },
           404: {
-            description: 'Filme não encontrado'
+            description: 'Film not found'
           }
         }
       }
@@ -678,14 +678,14 @@ module.exports = {
     '/persons': {
       post: {
         tags: [
-          'Pessoa'
+          'Person'
         ],
-        summary: 'Cadastrar uma nova pessoa',
+        summary: 'Create person',
         parameters: [
           {
             name: 'person',
             in: 'body',
-            description: 'Dados da pessoa que será cadastrada',
+            description: 'Person data',
             schema: {
               type: 'object',
               properties: {
@@ -703,25 +703,45 @@ module.exports = {
           }
         ],
         responses: {
-          204: {
-            description: 'Pessoa cadastrada com sucesso'
+          201: {
+            description: 'Person created',
+            schema: {
+              type: 'object',
+              properties: {
+                id: {
+                  type: 'integer'
+                },
+                name: {
+                  type: 'string'
+                },
+                biography: {
+                  type: 'string'
+                },
+                created_at: {
+                  type: 'string'
+                },
+                updated_at: {
+                  type: 'string'
+                }
+              }
+            }
           },
           400: {
-            description: 'Erro na requisição'
+            description: 'Bad request'
           },
           422: {
-            description: 'Erro de validação dos dados'
+            description: 'Data validation error'
           }
         }
       },
       get: {
         tags: [
-          'Pessoa'
+          'Person'
         ],
-        summary: 'Listar pessoas cadastradas',
+        summary: 'List persons',
         responses: {
           200: {
-            description: 'Lista de pessoas',
+            description: 'Person list',
             schema: {
               type: 'array',
               items: {
@@ -738,7 +758,7 @@ module.exports = {
             }
           },
           400: {
-            description: 'Erro na requisição'
+            description: 'Bad request'
           }
         }
       }
@@ -746,21 +766,21 @@ module.exports = {
     '/persons/{id}': {
       get: {
         tags: [
-          'Pessoa'
+          'Person'
         ],
-        summary: 'Buscar uma pessoa cadastrada',
+        summary: 'Find person',
         parameters: [
           {
             name: 'id',
             in: 'path',
-            description: 'ID da pessoa a ser pesquisada',
+            description: 'Person ID',
             required: true,
             type: 'integer'
           }
         ],
         responses: {
           200: {
-            description: 'Pessoa encontrada',
+            description: 'Person found',
             schema: {
               type: 'object',
               properties: {
@@ -777,27 +797,27 @@ module.exports = {
             }
           },
           404: {
-            description: 'Pessoa não encontrada'
+            description: 'Person not found'
           }
         }
       },
       put: {
         tags: [
-          'Pessoa'
+          'Person'
         ],
-        summary: 'Atualizar uma pessoa cadastrada',
+        summary: 'Update person',
         parameters: [
           {
             name: 'id',
             in: 'path',
-            description: 'ID da pessoa a ser atualizada',
+            description: 'Person ID',
             required: true,
             type: 'integer'
           },
           {
             name: 'person',
             in: 'body',
-            description: 'Dados da pessoa que serão atualizados',
+            description: 'Person data',
             schema: {
               type: 'object',
               properties: {
@@ -813,39 +833,39 @@ module.exports = {
         ],
         responses: {
           204: {
-            description: 'Pessoa atualizada com sucesso'
+            description: 'Person updated successfully'
           },
           400: {
-            description: 'Erro na requisição'
+            description: 'Bad request'
           },
           404: {
-            description: 'Pessoa não encontrada'
+            description: 'Person not found'
           },
           422: {
-            description: 'Erro de validação dos dados'
+            description: 'Data validation error'
           }
         }
       },
       delete: {
         tags: [
-          'Pessoa'
+          'Person'
         ],
-        summary: 'Excluir uma pessoa cadastrada',
+        summary: 'Delete person',
         parameters: [
           {
             name: 'id',
             in: 'path',
-            description: 'ID da pessoa a ser excluída',
+            description: 'Person ID',
             required: true,
             type: 'integer'
           }
         ],
         responses: {
           204: {
-            description: 'Pessoa excluída com sucesso'
+            description: 'Person deleted successfully'
           },
           404: {
-            description: 'Pessoa não encontrada'
+            description: 'Person not found'
           }
         }
       }

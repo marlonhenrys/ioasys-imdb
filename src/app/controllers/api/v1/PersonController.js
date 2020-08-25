@@ -28,14 +28,14 @@ module.exports = {
         biography: 'string'
       }, errorMessages)
 
-      const person = {
+      const data = {
         name: req.body.name,
         biography: req.body.biography
       }
 
-      await personService.create(person)
+      const person = await personService.create(data)
 
-      return res.status(HttpStatus.NO_CONTENT).send()
+      return res.status(HttpStatus.CREATED).json(person)
     } catch (error) {
       console.error(error)
 

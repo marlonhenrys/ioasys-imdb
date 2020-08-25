@@ -30,7 +30,7 @@ module.exports = {
     'duration.regex': 'Formato de tempo inválido'
   },
   genre: {
-
+    'name.required': 'O nome é obrigatório'
   },
   person: {
     'name.required': 'O nome é obrigatório'

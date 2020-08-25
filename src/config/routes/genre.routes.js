@@ -6,7 +6,6 @@ const routes = Router()
 
 routes.get('/genres', auth, access, GenreController.index)
 routes.post('/genres', auth, access, GenreController.create)
-routes.get('/genres/:id', auth, access, GenreController.show)
 routes.put('/genres/:id', auth, access, GenreController.update)
 routes.delete('/genres/:id', auth, access, GenreController.destroy)
 

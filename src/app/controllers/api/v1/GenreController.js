@@ -1,4 +1,6 @@
 const { genreService } = require('../../../services')
+const validator = require('indicative/validator')
+const { genre: errorMessages } = require('../../../utils/errorMessages')
 const HttpStatus = require('http-status-codes')
 
 module.exports = {
@@ -20,18 +22,63 @@ module.exports = {
   },
 
   create: async (req, res) => {
+    try {
+      await validator.validate(req.body, {
+        name: 'required|string'
+      }, errorMessages)
 
-  },
+      const genre = {
+        name: req.body.name
+      }
 
-  show: async (req, res) => {
+      await genreService.create(genre)
 
+      return res.status(HttpStatus.NO_CONTENT).send()
+    } catch (error) {
+      console.error(error)
+
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
+        message: error.message
+      })
+    }
   },
 
   update: async (req, res) => {
+    try {
+      await validator.validate(req.body, {
+        name: 'required|string'
+      }, errorMessages)
 
+      const data = {
+        id: req.params.id,
+        name: req.body.name
+      }
+
+      await genreService.update(data)
+
+      return res.status(HttpStatus.NO_CONTENT).send()
+    } catch (error) {
+      console.error(error)
+
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
+        message: error.message
+      })
+    }
   },
 
   destroy: async (req, res) => {
+    try {
+      const { id } = req.params
 
+      await genreService.destroy(id)
+
+      return res.status(HttpStatus.NO_CONTENT).send()
+    } catch (error) {
+      console.error(error)
+
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
+        message: error.message
+      })
+    }
   }
 }

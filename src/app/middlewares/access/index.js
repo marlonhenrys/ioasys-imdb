@@ -2,6 +2,7 @@ const ApplicationError = require('../../utils/errorHandler')
 const HttpStatus = require('http-status-codes')
 const userAcess = require('./user')
 const filmAcess = require('./film')
+const genreAcess = require('./genre')
 
 module.exports = async (req, res, next) => {
   try {
@@ -14,10 +15,13 @@ module.exports = async (req, res, next) => {
       permission = userAcess(action, req.params, currentRole)
     } else if (req.path.startsWith('/films')) {
       permission = filmAcess(action, req.params, currentRole)
+    } else if (req.path.startsWith('/genres')) {
+      permission = genreAcess(action, req.params, currentRole)
     }
 
     if (!permission) {
-      throw new ApplicationError('Você não tem permissão para acessar este recurso', HttpStatus.FORBIDDEN)
+      throw new ApplicationError('Você não tem permissão para acessar este recurso',
+        HttpStatus.FORBIDDEN)
     }
 
     return next()

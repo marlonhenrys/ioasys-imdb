@@ -1,7 +1,7 @@
 const auth = require('./auth')
-const access = require('./access')
+const isAdmin = require('./isAdmin')
 
 module.exports = {
   auth,
-  access
+  isAdmin
 }

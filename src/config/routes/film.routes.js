@@ -1,13 +1,13 @@
 const { Router } = require('express')
 const { FilmController } = require('../../app/controllers/api/v1')
-const { auth, access } = require('../../app/middlewares')
+const { auth, isAdmin } = require('../../app/middlewares')
 
 const routes = Router()
 
-routes.get('/films', auth, access, FilmController.index)
-routes.post('/films', auth, access, FilmController.create)
-routes.get('/films/:id', auth, access, FilmController.show)
-routes.put('/films/:id', auth, access, FilmController.update)
-routes.delete('/films/:id', auth, access, FilmController.destroy)
+routes.get('/films', FilmController.index)
+routes.post('/films', auth, isAdmin, FilmController.create)
+routes.get('/films/:id', FilmController.show)
+routes.put('/films/:id', auth, isAdmin, FilmController.update)
+routes.delete('/films/:id', auth, isAdmin, FilmController.destroy)
 
 module.exports = routes

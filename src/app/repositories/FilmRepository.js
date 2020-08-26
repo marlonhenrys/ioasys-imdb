@@ -5,13 +5,22 @@ module.exports = {
   create: film => Film.create(film),
 
   findById: id => Film.findByPk(id, {
-    include: {
-      association: 'genres',
-      attributes: ['id', 'name'],
-      through: {
-        attributes: []
+    include: [
+      {
+        association: 'genres',
+        attributes: ['id', 'name'],
+        through: {
+          attributes: []
+        }
+      },
+      {
+        association: 'persons',
+        attributes: ['id', 'name'],
+        through: {
+          attributes: ['role']
+        }
       }
-    },
+    ],
     attributes: {
       exclude: ['createdAt', 'updatedAt']
     }

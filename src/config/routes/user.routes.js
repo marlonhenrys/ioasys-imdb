@@ -4,11 +4,13 @@ const { auth, isAdmin } = require('../../app/middlewares')
 
 const routes = Router()
 
-routes.get('/users', auth, isAdmin, UserController.index)
-routes.post('/users', auth, isAdmin, UserController.create)
-routes.get('/users/:id', auth, isAdmin, UserController.show)
-routes.put('/users/:id', auth, UserController.update)
-routes.patch('/users', auth, UserController.updateStatus)
-routes.delete('/users/:id', auth, UserController.destroy)
+routes.use(auth)
+
+routes.get('/users', isAdmin, UserController.index)
+routes.post('/users', isAdmin, UserController.create)
+routes.get('/users/:id', isAdmin, UserController.show)
+routes.put('/users/:id', UserController.update)
+routes.patch('/users', UserController.updateStatus)
+routes.delete('/users/:id', UserController.destroy)
 
 module.exports = routes

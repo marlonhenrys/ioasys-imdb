@@ -26,7 +26,7 @@ module.exports = {
       description: 'CRUD'
     },
     {
-      name: 'Gênero',
+      name: 'Genre',
       description: 'CRUD'
     }
   ],
@@ -78,8 +78,28 @@ module.exports = {
           }
         ],
         responses: {
-          204: {
-            description: 'Registered user successfully'
+          201: {
+            description: 'User registered',
+            schema: {
+              type: 'object',
+              properties: {
+                id: {
+                  type: 'integer'
+                },
+                name: {
+                  type: 'string'
+                },
+                email: {
+                  type: 'string'
+                },
+                username: {
+                  type: 'string'
+                },
+                role: {
+                  type: 'string'
+                }
+              }
+            }
           },
           400: {
             description: 'Bad request'
@@ -198,8 +218,28 @@ module.exports = {
           }
         ],
         responses: {
-          204: {
-            description: 'User created successfully'
+          201: {
+            description: 'User created',
+            schema: {
+              type: 'object',
+              properties: {
+                id: {
+                  type: 'integer'
+                },
+                name: {
+                  type: 'string'
+                },
+                email: {
+                  type: 'string'
+                },
+                username: {
+                  type: 'string'
+                },
+                role: {
+                  type: 'string'
+                }
+              }
+            }
           },
           400: {
             description: 'Bad request'
@@ -681,7 +721,6 @@ module.exports = {
         }
       }
     },
-
     '/persons': {
       post: {
         tags: [
@@ -880,14 +919,14 @@ module.exports = {
     '/genres': {
       post: {
         tags: [
-          'Gênero'
+          'Genre'
         ],
-        summary: 'Cadastrar um novo gênero',
+        summary: 'Create genre',
         parameters: [
           {
             name: 'genre',
             in: 'body',
-            description: 'Dados do gênero que será cadastrado',
+            description: 'Genre data',
             schema: {
               type: 'object',
               properties: {
@@ -902,25 +941,36 @@ module.exports = {
           }
         ],
         responses: {
-          204: {
-            description: 'Gênero cadastrado com sucesso'
+          201: {
+            description: 'Genre created',
+            schema: {
+              type: 'object',
+              properties: {
+                id: {
+                  type: 'integer'
+                },
+                name: {
+                  type: 'string'
+                }
+              }
+            }
           },
           400: {
-            description: 'Erro na requisição'
+            description: 'Bad request'
           },
           422: {
-            description: 'Erro de validação dos dados'
+            description: 'Data validation error'
           }
         }
       },
       get: {
         tags: [
-          'Gênero'
+          'Genre'
         ],
-        summary: 'Listar gêneros cadastrados',
+        summary: 'List genres',
         responses: {
           200: {
-            description: 'Lista de gêneros',
+            description: 'Genre list',
             schema: {
               type: 'array',
               items: {
@@ -937,7 +987,7 @@ module.exports = {
             }
           },
           400: {
-            description: 'Erro na requisição'
+            description: 'Bad request'
           }
         }
       }
@@ -945,21 +995,21 @@ module.exports = {
     '/genres/{id}': {
       put: {
         tags: [
-          'Gênero'
+          'Genre'
         ],
-        summary: 'Atualizar um gênero cadastrado',
+        summary: 'Update genre',
         parameters: [
           {
             name: 'id',
             in: 'path',
-            description: 'ID do gênero a ser atualizado',
+            description: 'Genre ID',
             required: true,
             type: 'integer'
           },
           {
             name: 'genre',
             in: 'body',
-            description: 'Dados do gênero que serão atualizados',
+            description: 'Genre data',
             schema: {
               type: 'object',
               properties: {
@@ -975,36 +1025,36 @@ module.exports = {
         ],
         responses: {
           204: {
-            description: 'Gênero atualizado com sucesso'
+            description: 'Genre updated successfully'
           },
           400: {
-            description: 'Erro na requisição'
+            description: 'Bad request'
           },
           422: {
-            description: 'Erro de validação dos dados'
+            description: 'Data validation error'
           }
         }
       },
       delete: {
         tags: [
-          'Gênero'
+          'Genre'
         ],
-        summary: 'Excluir um gênero cadastrado',
+        summary: 'Delete genre',
         parameters: [
           {
             name: 'id',
             in: 'path',
-            description: 'ID do gênero a ser excluído',
+            description: 'Genre ID',
             required: true,
             type: 'integer'
           }
         ],
         responses: {
           204: {
-            description: 'Gênero excluído com sucesso'
+            description: 'Genre deleted successfully'
           },
           400: {
-            description: 'Erro na requisição'
+            description: 'Bad request'
           }
         }
       }

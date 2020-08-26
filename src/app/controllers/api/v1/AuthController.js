@@ -14,16 +14,16 @@ module.exports = {
         email: 'required|email|unique:User'
       }, errorMessages)
 
-      const user = {
+      const data = {
         name: req.body.name,
         username: req.body.username,
         password: req.body.password,
         email: req.body.email
       }
 
-      await userService.create(user)
+      const user = await userService.create(data)
 
-      return res.status(HttpStatus.NO_CONTENT).send()
+      return res.status(HttpStatus.CREATED).json(user)
     } catch (error) {
       console.error(error)
 

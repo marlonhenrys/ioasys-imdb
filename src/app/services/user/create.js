@@ -6,5 +6,5 @@ module.exports = async user => {
   user.username = user.username.toLowerCase()
   user.password = await bcrypt.hash(user.password, 10)
 
-  await userRepository.create(user)
+  return userRepository.create(user)
 }

@@ -27,13 +27,13 @@ module.exports = {
         name: 'required|string'
       }, errorMessages)
 
-      const genre = {
+      const data = {
         name: req.body.name
       }
 
-      await genreService.create(genre)
+      const genre = await genreService.create(data)
 
-      return res.status(HttpStatus.NO_CONTENT).send()
+      return res.status(HttpStatus.CREATED).json(genre)
     } catch (error) {
       console.error(error)
 

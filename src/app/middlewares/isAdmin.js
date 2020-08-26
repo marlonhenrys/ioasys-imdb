@@ -1,4 +1,4 @@
-const ApplicationError = require('../../utils/errorHandler')
+const ApplicationError = require('../utils/errorHandler')
 const HttpStatus = require('http-status-codes')
 const { role } = require('../utils/enumUser')
 

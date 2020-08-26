@@ -1,13 +1,13 @@
 const { Router } = require('express')
 const { PersonController } = require('../../app/controllers/api/v1')
-const { auth, access } = require('../../app/middlewares')
+const { auth, isAdmin } = require('../../app/middlewares')
 
 const routes = Router()
 
-routes.get('/persons', auth, access, PersonController.index)
-routes.post('/persons', auth, access, PersonController.create)
-routes.get('/persons/:id', auth, access, PersonController.show)
-routes.put('/persons/:id', auth, access, PersonController.update)
-routes.delete('/persons/:id', auth, access, PersonController.destroy)
+routes.get('/persons', PersonController.index)
+routes.post('/persons', auth, isAdmin, PersonController.create)
+routes.get('/persons/:id', PersonController.show)
+routes.put('/persons/:id', auth, isAdmin, PersonController.update)
+routes.delete('/persons/:id', auth, isAdmin, PersonController.destroy)
 
 module.exports = routes

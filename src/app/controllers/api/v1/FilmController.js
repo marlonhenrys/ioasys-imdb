@@ -27,6 +27,11 @@ module.exports = {
         name: 'required|string',
         synopsis: 'required|string',
         genres: 'required|array|min:1',
+        'genres.*': 'integer',
+        persons: 'required|array|min:1',
+        'persons.*': 'object',
+        'persons.*.id': 'required|integer',
+        'persons.*.role': 'required|string|in:Diretor,Produtor,Roteirista,Ator',
         language: 'required|string',
         release: 'required|date',
         duration: [
@@ -36,18 +41,19 @@ module.exports = {
         ]
       }, errorMessages)
 
-      const film = {
+      const data = {
         name: req.body.name,
         synopsis: req.body.synopsis,
         genres: req.body.genres,
+        persons: req.body.persons,
         duration: req.body.duration,
         language: req.body.language,
         release: req.body.release
       }
 
-      await filmService.create(film)
+      const film = await filmService.create(data)
 
-      return res.status(HttpStatus.NO_CONTENT).send()
+      return res.status(HttpStatus.CREATED).json(film)
     } catch (error) {
       console.error(error)
 
@@ -78,6 +84,11 @@ module.exports = {
         name: 'string',
         synopsis: 'string',
         genres: 'array|min:1',
+        'genres.*': 'integer',
+        persons: 'array|min:1',
+        'persons.*': 'object',
+        'persons.*.id': 'required|integer',
+        'persons.*.role': 'required|string|in:Diretor,Produtor,Roteirista,Ator',
         language: 'string',
         release: 'date',
         duration: [
@@ -91,6 +102,7 @@ module.exports = {
         name: req.body.name,
         synopsis: req.body.synopsis,
         genres: req.body.genres,
+        persons: req.body.persons,
         duration: req.body.duration,
         language: req.body.language,
         release: req.body.release

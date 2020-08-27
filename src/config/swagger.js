@@ -490,6 +490,20 @@ module.exports = {
                     type: 'integer'
                   }
                 },
+                persons: {
+                  type: 'array',
+                  items: {
+                    type: 'object',
+                    properties: {
+                      id: {
+                        type: 'integer'
+                      },
+                      role: {
+                        type: 'string'
+                      }
+                    }
+                  }
+                },
                 duration: {
                   type: 'string'
                 },
@@ -504,6 +518,7 @@ module.exports = {
                 'name',
                 'synopsis',
                 'genres',
+                'persons',
                 'duration',
                 'language',
                 'release'
@@ -512,8 +527,67 @@ module.exports = {
           }
         ],
         responses: {
-          204: {
-            description: 'Film created successfully'
+          201: {
+            description: 'Film created',
+            schema: {
+              type: 'object',
+              properties: {
+                id: {
+                  type: 'integer'
+                },
+                name: {
+                  type: 'string'
+                },
+                synopsis: {
+                  type: 'string'
+                },
+                genres: {
+                  type: 'array',
+                  items: {
+                    type: 'object',
+                    properties: {
+                      id: {
+                        type: 'integer'
+                      },
+                      name: {
+                        type: 'string'
+                      }
+                    }
+                  }
+                },
+                persons: {
+                  type: 'array',
+                  items: {
+                    type: 'object',
+                    properties: {
+                      id: {
+                        type: 'integer'
+                      },
+                      name: {
+                        type: 'string'
+                      },
+                      participations: {
+                        type: 'object',
+                        properties: {
+                          role: {
+                            type: 'string'
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                duration: {
+                  type: 'string'
+                },
+                language: {
+                  type: 'string'
+                },
+                release: {
+                  type: 'string'
+                }
+              }
+            }
           },
           400: {
             description: 'Bad request'
@@ -614,6 +688,28 @@ module.exports = {
                     }
                   }
                 },
+                persons: {
+                  type: 'array',
+                  items: {
+                    type: 'object',
+                    properties: {
+                      id: {
+                        type: 'integer'
+                      },
+                      name: {
+                        type: 'string'
+                      },
+                      participations: {
+                        type: 'object',
+                        properties: {
+                          role: {
+                            type: 'string'
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
                 duration: {
                   type: 'string'
                 },
@@ -664,6 +760,20 @@ module.exports = {
                   type: 'array',
                   items: {
                     type: 'integer'
+                  }
+                },
+                persons: {
+                  type: 'array',
+                  items: {
+                    type: 'object',
+                    properties: {
+                      id: {
+                        type: 'integer'
+                      },
+                      role: {
+                        type: 'string'
+                      }
+                    }
                   }
                 },
                 duration: {

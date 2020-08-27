@@ -45,6 +45,11 @@ class User extends Model {
       sequelize
     })
   }
+
+  toJSON () {
+    const user = { ...this.get() }
+    return Object.fromEntries(Object.entries(user).filter(([key]) => !['password'].includes(key)))
+  }
 }
 
 module.exports = User

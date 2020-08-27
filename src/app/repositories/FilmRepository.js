@@ -28,14 +28,26 @@ module.exports = {
 
   findAll: (options, conditions) => Film.findAll({
     options,
-    include: {
-      association: 'genres',
-      attributes: ['name'],
-      through: {
-        attributes: []
+    where: conditions.film,
+    include: [
+      {
+        association: 'genres',
+        where: conditions.genre,
+        attributes: ['name'],
+        through: {
+          attributes: []
+        }
       },
-      where: conditions.genre
-    },
+      {
+        association: 'persons',
+        where: conditions.person,
+        attributes: [],
+        through: {
+          where: conditions.participation,
+          attributes: []
+        }
+      }
+    ],
     attributes: {
       exclude: ['createdAt', 'updatedAt']
     }

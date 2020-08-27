@@ -256,6 +256,24 @@ module.exports = {
         summary: 'List users',
         parameters: [
           {
+            name: 'page',
+            in: 'query',
+            description: 'Page number',
+            type: 'integer'
+          },
+          {
+            name: 'limit',
+            in: 'query',
+            description: 'Records per page',
+            type: 'integer'
+          },
+          {
+            name: 'name',
+            in: 'query',
+            description: 'User name',
+            type: 'string'
+          },
+          {
             name: 'role',
             in: 'query',
             description: 'User role',
@@ -602,6 +620,44 @@ module.exports = {
           'Film'
         ],
         summary: 'List films',
+        parameters: [
+          {
+            name: 'page',
+            in: 'query',
+            description: 'Page number',
+            type: 'integer'
+          },
+          {
+            name: 'limit',
+            in: 'query',
+            description: 'Records per page',
+            type: 'integer'
+          },
+          {
+            name: 'name',
+            in: 'query',
+            description: 'Film name',
+            type: 'string'
+          },
+          {
+            name: 'genre',
+            in: 'query',
+            description: 'Genre ID',
+            type: 'integer'
+          },
+          {
+            name: 'person',
+            in: 'query',
+            description: 'Person name',
+            type: 'string'
+          },
+          {
+            name: 'role',
+            in: 'query',
+            description: 'Person role',
+            type: 'string'
+          }
+        ],
         responses: {
           200: {
             description: 'Film list',
@@ -895,6 +951,26 @@ module.exports = {
           'Person'
         ],
         summary: 'List persons',
+        parameters: [
+          {
+            name: 'page',
+            in: 'query',
+            description: 'Page number',
+            type: 'integer'
+          },
+          {
+            name: 'limit',
+            in: 'query',
+            description: 'Records per page',
+            type: 'integer'
+          },
+          {
+            name: 'name',
+            in: 'query',
+            description: 'Person name',
+            type: 'string'
+          }
+        ],
         responses: {
           200: {
             description: 'Person list',
@@ -1078,6 +1154,26 @@ module.exports = {
           'Genre'
         ],
         summary: 'List genres',
+        parameters: [
+          {
+            name: 'page',
+            in: 'query',
+            description: 'Page number',
+            type: 'integer'
+          },
+          {
+            name: 'limit',
+            in: 'query',
+            description: 'Records per page',
+            type: 'integer'
+          },
+          {
+            name: 'name',
+            in: 'query',
+            description: 'Genre name',
+            type: 'string'
+          }
+        ],
         responses: {
           200: {
             description: 'Genre list',

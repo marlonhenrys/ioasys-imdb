@@ -32,7 +32,9 @@ module.exports = {
     'release.required': 'A data de lançamento é obrigatória',
     'release.date': 'Formato de data inválido',
     'duration.required': 'O tempo de duração é obrigatório',
-    'duration.regex': 'Formato de tempo inválido'
+    'duration.regex': 'Formato de tempo inválido',
+    'value.number': 'O valor deve ser inteiro e positivo',
+    'value.under': 'O valor deve estar entre 0 e 4'
   },
   genre: {
     'name.required': 'O nome é obrigatório'

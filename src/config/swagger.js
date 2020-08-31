@@ -603,6 +603,9 @@ module.exports = {
                 },
                 release: {
                   type: 'string'
+                },
+                average_ratings: {
+                  type: 'integer'
                 }
               }
             }
@@ -638,6 +641,12 @@ module.exports = {
             in: 'query',
             description: 'Film name',
             type: 'string'
+          },
+          {
+            name: 'rating',
+            in: 'query',
+            description: 'Average film rating',
+            type: 'integer'
           },
           {
             name: 'genre',
@@ -689,6 +698,9 @@ module.exports = {
                   },
                   release: {
                     type: 'string'
+                  },
+                  average_ratings: {
+                    type: 'integer'
                   }
                 }
               }
@@ -774,6 +786,9 @@ module.exports = {
                 },
                 release: {
                   type: 'string'
+                },
+                average_ratings: {
+                  type: 'integer'
                 }
               }
             }
@@ -883,6 +898,51 @@ module.exports = {
           },
           404: {
             description: 'Film not found'
+          }
+        }
+      }
+    },
+    '/films/{id}/rating': {
+      post: {
+        tags: [
+          'Film'
+        ],
+        summary: 'Rate film',
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            description: 'Film ID',
+            required: true,
+            type: 'integer'
+          },
+          {
+            name: 'rating',
+            in: 'body',
+            description: 'User vote',
+            required: true,
+            schema: {
+              type: 'object',
+              properties: {
+                value: {
+                  type: 'integer'
+                }
+              }
+            }
+          }
+        ],
+        responses: {
+          204: {
+            description: 'Film rated successfully'
+          },
+          400: {
+            description: 'Bad request'
+          },
+          404: {
+            description: 'Film not found'
+          },
+          422: {
+            description: 'Data validation error'
           }
         }
       }

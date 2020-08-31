@@ -46,6 +46,10 @@ class User extends Model {
     })
   }
 
+  static associate (models) {
+    this.belongsToMany(models.Film, { foreignKey: 'user_id', through: 'ratings', as: 'voteds' })
+  }
+
   toJSON () {
     const user = { ...this.get() }
     return Object.fromEntries(Object.entries(user).filter(([key]) => !['password'].includes(key)))

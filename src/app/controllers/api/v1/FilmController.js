@@ -133,5 +133,29 @@ module.exports = {
         message: error.message
       })
     }
+  },
+
+  rate: async (req, res) => {
+    try {
+      await validator.validate(req.body, {
+        value: 'required|number|under:5'
+      }, errorMessages)
+
+      const data = {
+        filmId: req.params.id,
+        userId: req.auth.id,
+        value: req.body.value
+      }
+
+      await filmService.rate(data)
+
+      return res.status(HttpStatus.NO_CONTENT).send()
+    } catch (error) {
+      console.error(error)
+
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
+        message: error.message
+      })
+    }
   }
 }

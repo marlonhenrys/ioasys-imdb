@@ -9,6 +9,7 @@ Film.init(connection)
 Genre.init(connection)
 Person.init(connection)
 
+User.associate(connection.models)
 Film.associate(connection.models)
 Genre.associate(connection.models)
 Person.associate(connection.models)

@@ -33,7 +33,7 @@ class User extends Model {
           len: [6, 254]
         }
       },
-      type: {
+      role: {
         type: DataTypes.ENUM('Admin', 'Member'),
         allowNull: false
       },

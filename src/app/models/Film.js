@@ -25,7 +25,8 @@ class Film extends Model {
       },
       average_ratings: {
         type: DataTypes.FLOAT,
-        allowNull: false
+        allowNull: true,
+        defaultValue: 0
       }
     }, {
       sequelize
@@ -34,7 +35,8 @@ class Film extends Model {
 
   static associate (models) {
     this.belongsToMany(models.Genre, { foreignKey: 'film_id', through: 'film_genres', as: 'genres' })
-    this.belongsToMany(models.Person, { foreignKey: 'film_id', through: 'participations', as: 'persons' })
+    this.belongsToMany(models.Person, { foreignKey: 'film_id', through: models.Participation, as: 'persons' })
+    this.hasMany(models.Participation, { foreignKey: 'film_id', as: 'participations' })
   }
 }
 

@@ -1,9 +1,9 @@
 const filmRepository = require('../../repositories/FilmRepository')
+const userService = require('../user')
+const findOne = require('./findOne')
 
 module.exports = async ({ filmId, userId, value }) => {
-  const { userService, filmService } = require('../../services')
-
-  const film = await filmService.findOne(filmId)
+  const film = await findOne(filmId)
   const user = await userService.findOne(userId)
 
   await film.addVote(user, { through: { value } })

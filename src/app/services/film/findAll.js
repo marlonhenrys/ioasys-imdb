@@ -11,7 +11,7 @@ module.exports = (page = 1, limit = 10, filters) => {
     }
   }
   if (filters.rating) {
-    conditions.film.average_ratings = filters.rating
+    conditions.film.avg_rating = filters.rating
   }
 
   if (filters.genre) {

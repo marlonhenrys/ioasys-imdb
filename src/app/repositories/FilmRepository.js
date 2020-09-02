@@ -28,17 +28,13 @@ module.exports = {
     }
   }),
 
-  findByIdWithAvgRating: id => Film.findByPk(id, {
-    include: [
-      {
-        association: 'votes',
-        attributes: [],
-        through: {
-          attributes: [[fn('AVG', col('value')), 'avg_rating']]
-        }
-      }
-    ],
-    attributes: []
+  averageRating: filmId => Film.findByPk(filmId, {
+    attributes: ['id', [fn('AVG', col('ratings.value')), 'avg_rating']],
+    include: {
+      association: 'ratings',
+      attributes: []
+    },
+    group: ['Film.id']
   }),
 
   findAll: (options, conditions) => Film.findAll({

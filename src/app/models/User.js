@@ -47,7 +47,8 @@ class User extends Model {
   }
 
   static associate (models) {
-    this.belongsToMany(models.Film, { foreignKey: 'user_id', through: 'ratings', as: 'voteds' })
+    this.belongsToMany(models.Film, { foreignKey: 'user_id', through: models.Rating, as: 'voteds' })
+    this.hasMany(models.Rating, { foreignKey: 'user_id', as: 'ratings' })
   }
 
   toJSON () {

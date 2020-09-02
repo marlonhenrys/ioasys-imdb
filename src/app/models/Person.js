@@ -12,12 +12,14 @@ class Person extends Model {
         allowNull: true
       }
     }, {
-      sequelize
+      sequelize,
+      tableName: 'persons'
     })
   }
 
   static associate (models) {
-    this.belongsToMany(models.Film, { foreignKey: 'person_id', through: 'participations', as: 'films' })
+    this.belongsToMany(models.Film, { foreignKey: 'person_id', through: models.Participation, as: 'films' })
+    this.hasMany(models.Participation, { foreignKey: 'person_id', as: 'participations' })
   }
 }
 

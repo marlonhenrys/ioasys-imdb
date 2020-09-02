@@ -40,6 +40,11 @@ module.exports = {
   produces: [
     'application/json'
   ],
+  security: [
+    {
+      Authorization: []
+    }
+  ],
   paths: {
     '/signup': {
       post: {
@@ -573,7 +578,7 @@ module.exports = {
                     }
                   }
                 },
-                persons: {
+                participations: {
                   type: 'array',
                   items: {
                     type: 'object',
@@ -581,13 +586,16 @@ module.exports = {
                       id: {
                         type: 'integer'
                       },
-                      name: {
+                      role: {
                         type: 'string'
                       },
-                      participations: {
+                      person: {
                         type: 'object',
                         properties: {
-                          role: {
+                          id: {
+                            type: 'integer'
+                          },
+                          name: {
                             type: 'string'
                           }
                         }
@@ -687,7 +695,15 @@ module.exports = {
                   genres: {
                     type: 'array',
                     items: {
-                      type: 'string'
+                      type: 'object',
+                      properties: {
+                        id: {
+                          type: 'integer'
+                        },
+                        name: {
+                          type: 'string'
+                        }
+                      }
                     }
                   },
                   duration: {
@@ -756,7 +772,7 @@ module.exports = {
                     }
                   }
                 },
-                persons: {
+                participations: {
                   type: 'array',
                   items: {
                     type: 'object',
@@ -764,13 +780,16 @@ module.exports = {
                       id: {
                         type: 'integer'
                       },
-                      name: {
+                      role: {
                         type: 'string'
                       },
-                      participations: {
+                      person: {
                         type: 'object',
                         properties: {
-                          role: {
+                          id: {
+                            type: 'integer'
+                          },
+                          name: {
                             type: 'string'
                           }
                         }

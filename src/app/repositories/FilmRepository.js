@@ -15,10 +15,11 @@ module.exports = {
         }
       },
       {
-        association: 'persons',
-        attributes: ['id', 'name'],
-        through: {
-          attributes: ['role']
+        association: 'participations',
+        attributes: ['id', 'role'],
+        include: {
+          association: 'person',
+          attributes: ['id', 'name']
         }
       }
     ],
@@ -47,17 +48,18 @@ module.exports = {
       {
         association: 'genres',
         where: conditions.genre,
-        attributes: ['name'],
+        attributes: ['id', 'name'],
         through: {
           attributes: []
         }
       },
       {
-        association: 'persons',
-        where: conditions.person,
+        association: 'participations',
+        where: conditions.participation,
         attributes: [],
-        through: {
-          where: conditions.participation,
+        include: {
+          association: 'person',
+          where: conditions.person,
           attributes: []
         }
       }

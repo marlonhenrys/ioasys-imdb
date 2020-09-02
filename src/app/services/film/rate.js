@@ -10,7 +10,7 @@ module.exports = async ({ filmId, userId, value }) => {
 
   const result = await filmRepository.averageRating(film.id)
 
-  film.avg_rating = result.getDataValue('avg_rating')
+  film.avgRating = parseFloat(result.getDataValue('avg_rating')).toFixed(1)
 
   await film.save()
 }

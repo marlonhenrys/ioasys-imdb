@@ -612,7 +612,7 @@ module.exports = {
                 release: {
                   type: 'string'
                 },
-                avg_rating: {
+                avgRating: {
                   type: 'number'
                 }
               }
@@ -715,7 +715,7 @@ module.exports = {
                   release: {
                     type: 'string'
                   },
-                  avg_rating: {
+                  avgRating: {
                     type: 'number'
                   }
                 }
@@ -806,7 +806,7 @@ module.exports = {
                 release: {
                   type: 'string'
                 },
-                avg_rating: {
+                avgRating: {
                   type: 'number'
                 }
               }
@@ -921,7 +921,7 @@ module.exports = {
         }
       }
     },
-    '/films/{id}/rating': {
+    '/films/{id}/ratings': {
       post: {
         tags: [
           'Film'

@@ -23,7 +23,7 @@ class Film extends Model {
         type: DataTypes.DATEONLY,
         allowNull: false
       },
-      avg_rating: {
+      avgRating: {
         type: DataTypes.FLOAT,
         allowNull: true,
         defaultValue: 0

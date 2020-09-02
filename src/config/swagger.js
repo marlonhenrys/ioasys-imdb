@@ -612,8 +612,8 @@ module.exports = {
                 release: {
                   type: 'string'
                 },
-                average_ratings: {
-                  type: 'integer'
+                avg_rating: {
+                  type: 'number'
                 }
               }
             }
@@ -654,7 +654,7 @@ module.exports = {
             name: 'rating',
             in: 'query',
             description: 'Average film rating',
-            type: 'integer'
+            type: 'number'
           },
           {
             name: 'genre',
@@ -715,8 +715,8 @@ module.exports = {
                   release: {
                     type: 'string'
                   },
-                  average_ratings: {
-                    type: 'integer'
+                  avg_rating: {
+                    type: 'number'
                   }
                 }
               }
@@ -806,8 +806,8 @@ module.exports = {
                 release: {
                   type: 'string'
                 },
-                average_ratings: {
-                  type: 'integer'
+                avg_rating: {
+                  type: 'number'
                 }
               }
             }

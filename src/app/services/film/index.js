@@ -4,6 +4,8 @@ const findAll = require('./findAll')
 const update = require('./update')
 const destroy = require('./destroy')
 const rate = require('./rate')
+const graph = require('./graph')
+const ranking = require('./ranking')
 
 module.exports = {
   create,
@@ -11,5 +13,7 @@ module.exports = {
   findAll,
   update,
   destroy,
-  rate
+  rate,
+  graph,
+  ranking
 }

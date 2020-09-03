@@ -7,5 +7,6 @@ routes.use(require('./user.routes'))
 routes.use(require('./film.routes'))
 routes.use(require('./genre.routes'))
 routes.use(require('./person.routes'))
+routes.use(require('./report.routes'))
 
 module.exports = routes

@@ -28,6 +28,10 @@ module.exports = {
     {
       name: 'Genre',
       description: 'CRUD'
+    },
+    {
+      name: 'Report',
+      description: 'Graph / Ranking'
     }
   ],
   schemes: [
@@ -1340,6 +1344,97 @@ module.exports = {
           },
           400: {
             description: 'Bad request'
+          }
+        }
+      }
+    },
+    '/reports/graph': {
+      get: {
+        tags: [
+          'Report'
+        ],
+        summary: 'Films graph',
+        responses: {
+          200: {
+            description: 'Amount per vote',
+            schema: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  avgRating: {
+                    type: 'number'
+                  },
+                  amount: {
+                    type: 'integer'
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    '/reports/ranking': {
+      get: {
+        tags: [
+          'Report'
+        ],
+        summary: 'Films ranking',
+        parameters: [
+          {
+            name: 'size',
+            in: 'query',
+            description: 'Ranking size',
+            type: 'integer'
+          }
+        ],
+        responses: {
+          200: {
+            description: 'Film list',
+            schema: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  id: {
+                    type: 'integer'
+                  },
+                  name: {
+                    type: 'string'
+                  },
+                  synopsis: {
+                    type: 'string'
+                  },
+                  duration: {
+                    type: 'string'
+                  },
+                  language: {
+                    type: 'string'
+                  },
+                  release: {
+                    type: 'string'
+                  },
+                  avgRating: {
+                    type: 'number'
+                  },
+                  genres: {
+                    type: 'array',
+                    items: {
+                      type: 'object',
+                      properties: {
+                        id: {
+                          type: 'integer'
+                        },
+                        name: {
+                          type: 'string'
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }

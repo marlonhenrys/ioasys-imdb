@@ -1723,6 +1723,17 @@ module.exports = {
                 }
               }
             }
+          },
+          400: {
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       }
@@ -1784,6 +1795,17 @@ module.exports = {
                       }
                     }
                   }
+                }
+              }
+            }
+          },
+          400: {
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
                 }
               }
             }

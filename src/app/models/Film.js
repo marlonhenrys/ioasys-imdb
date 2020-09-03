@@ -23,7 +23,7 @@ class Film extends Model {
         type: DataTypes.DATEONLY,
         allowNull: false
       },
-      average_ratings: {
+      avgRating: {
         type: DataTypes.FLOAT,
         allowNull: true,
         defaultValue: 0
@@ -35,8 +35,12 @@ class Film extends Model {
 
   static associate (models) {
     this.belongsToMany(models.Genre, { foreignKey: 'film_id', through: 'film_genres', as: 'genres' })
+
     this.belongsToMany(models.Person, { foreignKey: 'film_id', through: models.Participation, as: 'persons' })
     this.hasMany(models.Participation, { foreignKey: 'film_id', as: 'participations' })
+
+    this.belongsToMany(models.User, { foreignKey: 'film_id', through: models.Rating, as: 'votes' })
+    this.hasMany(models.Rating, { foreignKey: 'film_id', as: 'ratings' })
   }
 }
 

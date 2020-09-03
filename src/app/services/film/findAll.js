@@ -10,6 +10,10 @@ module.exports = (page = 1, limit = 10, filters) => {
       [Op.iLike]: '%' + filters.name + '%'
     }
   }
+  if (filters.rating) {
+    conditions.film.avgRating = filters.rating
+  }
+
   if (filters.genre) {
     conditions.genre.id = filters.genre
   }

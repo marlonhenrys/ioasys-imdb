@@ -1,4 +1,5 @@
 const { Film } = require('../models')
+const { fn, col } = require('sequelize')
 
 module.exports = {
 
@@ -25,6 +26,15 @@ module.exports = {
     attributes: {
       exclude: ['createdAt', 'updatedAt']
     }
+  }),
+
+  averageRating: filmId => Film.findByPk(filmId, {
+    attributes: ['id', [fn('AVG', col('ratings.value')), 'avg_rating']],
+    include: {
+      association: 'ratings',
+      attributes: []
+    },
+    group: ['Film.id']
   }),
 
   findAll: (options, conditions) => Film.findAll({

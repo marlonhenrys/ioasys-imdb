@@ -29,7 +29,7 @@ module.exports = {
   }),
 
   averageRating: filmId => Film.findByPk(filmId, {
-    attributes: ['id', [fn('AVG', col('ratings.value')), 'avg_rating']],
+    attributes: ['id', [fn('AVG', col('ratings.value')), 'avgRating']],
     include: {
       association: 'ratings',
       attributes: []

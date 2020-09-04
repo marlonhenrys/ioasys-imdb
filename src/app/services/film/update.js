@@ -1,10 +1,10 @@
 const filmRepository = require('../../repositories/FilmRepository')
 const ApplicationError = require('../../utils/errorHandler')
 const HttpStatus = require('http-status-codes')
+const genreService = require('../genre')
+const personService = require('../person')
 
 module.exports = async data => {
-  const { genreService, personService } = require('../../services')
-
   const film = await filmRepository.findById(data.id)
 
   if (!film) {

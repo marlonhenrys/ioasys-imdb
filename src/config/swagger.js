@@ -111,10 +111,26 @@ module.exports = {
             }
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           422: {
-            description: 'Data validation error'
+            description: 'Data validation error',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       }
@@ -181,7 +197,15 @@ module.exports = {
             }
           },
           401: {
-            description: 'Unauthorized'
+            description: 'Unauthorized',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       }
@@ -251,10 +275,26 @@ module.exports = {
             }
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           422: {
-            description: 'Data validation error'
+            description: 'Data validation error',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       },
@@ -317,7 +357,15 @@ module.exports = {
             }
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       },
@@ -355,13 +403,37 @@ module.exports = {
             description: 'Updated status successfully'
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           404: {
-            description: 'User not found'
+            description: 'User not found',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           422: {
-            description: 'Data validation error'
+            description: 'Data validation error',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       }
@@ -406,10 +478,26 @@ module.exports = {
             }
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           404: {
-            description: 'User not found'
+            description: 'User not found',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       },
@@ -451,13 +539,37 @@ module.exports = {
             description: 'Updated user successfully'
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           404: {
-            description: 'User not found'
+            description: 'User not found',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           422: {
-            description: 'Data validation error'
+            description: 'Data validation error',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       },
@@ -480,13 +592,37 @@ module.exports = {
             description: 'User deleted successfully'
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           404: {
-            description: 'User not found'
+            description: 'User not found',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           422: {
-            description: 'Data validation error'
+            description: 'Data validation error',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       }
@@ -623,10 +759,26 @@ module.exports = {
             }
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           422: {
-            description: 'Data validation error'
+            description: 'Data validation error',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       },
@@ -727,7 +879,15 @@ module.exports = {
             }
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       }
@@ -817,10 +977,26 @@ module.exports = {
             }
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           404: {
-            description: 'Film not found'
+            description: 'Film not found',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       },
@@ -888,13 +1064,37 @@ module.exports = {
             description: 'Film updated successfully'
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           404: {
-            description: 'Film not found'
+            description: 'Film not found',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           422: {
-            description: 'Data validation error'
+            description: 'Data validation error',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       },
@@ -917,10 +1117,26 @@ module.exports = {
             description: 'Film deleted successfully'
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           404: {
-            description: 'Film not found'
+            description: 'Film not found',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       }
@@ -959,13 +1175,37 @@ module.exports = {
             description: 'Film rated successfully'
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           404: {
-            description: 'Film not found'
+            description: 'Film not found',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           422: {
-            description: 'Data validation error'
+            description: 'Data validation error',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       }
@@ -1022,10 +1262,26 @@ module.exports = {
             }
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           422: {
-            description: 'Data validation error'
+            description: 'Data validation error',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       },
@@ -1073,7 +1329,15 @@ module.exports = {
             }
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       }
@@ -1112,7 +1376,15 @@ module.exports = {
             }
           },
           404: {
-            description: 'Person not found'
+            description: 'Person not found',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       },
@@ -1151,13 +1423,37 @@ module.exports = {
             description: 'Person updated successfully'
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           404: {
-            description: 'Person not found'
+            description: 'Person not found',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           422: {
-            description: 'Data validation error'
+            description: 'Data validation error',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       },
@@ -1180,7 +1476,15 @@ module.exports = {
             description: 'Person deleted successfully'
           },
           404: {
-            description: 'Person not found'
+            description: 'Person not found',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       }
@@ -1225,10 +1529,26 @@ module.exports = {
             }
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           422: {
-            description: 'Data validation error'
+            description: 'Data validation error',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       },
@@ -1276,7 +1596,15 @@ module.exports = {
             }
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       }
@@ -1317,10 +1645,26 @@ module.exports = {
             description: 'Genre updated successfully'
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           },
           422: {
-            description: 'Data validation error'
+            description: 'Data validation error',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       },
@@ -1343,7 +1687,15 @@ module.exports = {
             description: 'Genre deleted successfully'
           },
           400: {
-            description: 'Bad request'
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
           }
         }
       }
@@ -1368,6 +1720,17 @@ module.exports = {
                   amount: {
                     type: 'integer'
                   }
+                }
+              }
+            }
+          },
+          400: {
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
                 }
               }
             }
@@ -1432,6 +1795,17 @@ module.exports = {
                       }
                     }
                   }
+                }
+              }
+            }
+          },
+          400: {
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
                 }
               }
             }

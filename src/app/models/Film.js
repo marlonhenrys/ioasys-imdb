@@ -27,6 +27,10 @@ class Film extends Model {
         type: DataTypes.FLOAT,
         allowNull: true,
         defaultValue: 0
+      },
+      coverUrl: {
+        type: DataTypes.STRING,
+        allowNull: true
       }
     }, {
       sequelize

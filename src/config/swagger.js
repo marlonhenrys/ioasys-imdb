@@ -1210,6 +1210,71 @@ module.exports = {
         }
       }
     },
+    '/films/{id}/covers': {
+      post: {
+        tags: [
+          'Film'
+        ],
+        summary: 'Upload film cover',
+        consumes: [
+          'multipart/form-data'
+        ],
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            description: 'Film ID',
+            required: true,
+            type: 'integer'
+          },
+          {
+            name: 'file',
+            in: 'formData',
+            description: 'The file to upload',
+            required: true,
+            type: 'file'
+          }
+        ],
+        responses: {
+          204: {
+            description: 'Film cover uploaded successfully'
+          },
+          400: {
+            description: 'Bad request',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
+          },
+          404: {
+            description: 'Film not found',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
+          },
+          422: {
+            description: 'Data validation error',
+            schema: {
+              type: 'object',
+              properties: {
+                message: {
+                  type: 'string'
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     '/persons': {
       post: {
         tags: [

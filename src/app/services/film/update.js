@@ -47,5 +47,9 @@ module.exports = async data => {
     }
   }
 
+  if (data.fileName) {
+    film.coverUrl = `${process.env.APP_URL}/files/${data.fileName}`
+  }
+
   await film.save()
 }

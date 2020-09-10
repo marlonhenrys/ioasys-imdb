@@ -157,5 +157,24 @@ module.exports = {
         message: error.message
       })
     }
+  },
+
+  cover: async (req, res) => {
+    try {
+      const data = {
+        id: req.params.id,
+        fileName: req.file.filename
+      }
+
+      await filmService.update(data)
+
+      return res.status(HttpStatus.NO_CONTENT).send()
+    } catch (error) {
+      console.error(error)
+
+      return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
+        message: error.message
+      })
+    }
   }
 }

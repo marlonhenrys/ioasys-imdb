@@ -5,6 +5,10 @@ const swaggerUi = require('swagger-ui-express')
 const swaggerConfig = require('./swagger')
 const path = require('path')
 
+require('dotenv').config({
+  path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env'
+})
+
 require('../database')
 require('./indicative')
 

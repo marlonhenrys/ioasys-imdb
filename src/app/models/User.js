@@ -35,6 +35,7 @@ class User extends Model {
       },
       role: {
         type: DataTypes.ENUM('Admin', 'Member'),
+        defaultValue: 'Member',
         allowNull: false
       },
       status: {

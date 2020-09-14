@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const http = require('http')
 const app = require('./src/config/app')
 

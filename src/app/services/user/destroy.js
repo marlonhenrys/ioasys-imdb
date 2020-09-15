@@ -4,7 +4,7 @@ const HttpStatus = require('http-status-codes')
 const { role, status } = require('../../utils/enumUser')
 
 module.exports = async (userId, auth) => {
-  if (auth.role === role.ADM || auth.id === userId) {
+  if (auth.role === role.ADM || auth.id === parseInt(userId)) {
     const user = await userRepository.findById(userId)
 
     if (!user) {

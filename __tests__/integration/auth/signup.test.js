@@ -12,7 +12,7 @@ describe('Authenticate endpoints', () => {
     password: faker.internet.password()
   }
 
-  describe('POST /signin', () => {
+  describe('POST /signup', () => {
     test('Should return 201 when create a user with valid data', async () => {
       const response = await request(app)
         .post(url)

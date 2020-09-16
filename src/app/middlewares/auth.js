@@ -39,8 +39,6 @@ module.exports = async (req, res, next) => {
         throw new ApplicationError('Este usuário está desabilitado', HttpStatus.FORBIDDEN)
       } else if (user.status === status.DIS) {
         throw new ApplicationError('Este usuário foi desabilitado por um administrador', HttpStatus.FORBIDDEN)
-      } else if (user.status === status.DEL) {
-        throw new ApplicationError('Este usuário foi excluído', HttpStatus.FORBIDDEN)
       }
 
       req.auth = {

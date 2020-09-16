@@ -22,8 +22,6 @@ module.exports = async (email, password) => {
     throw new ApplicationError('Este usuário está desabilitado', HttpStatus.FORBIDDEN)
   } else if (user.status === status.DIS) {
     throw new ApplicationError('Este usuário foi desabilitado por um administrador', HttpStatus.FORBIDDEN)
-  } else if (user.status === status.DEL) {
-    throw new ApplicationError('Este usuário foi excluído', HttpStatus.FORBIDDEN)
   }
 
   const token = jwt.sign({ user_id: user.id }, process.env.APP_KEY, {

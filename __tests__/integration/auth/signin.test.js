@@ -2,7 +2,7 @@ const request = require('supertest')
 const app = require('../../../src/config/app')
 const faker = require('faker/locale/pt_BR')
 
-describe('Authenticate Endpoints', () => {
+describe('Authenticate endpoints', () => {
   const url = '/api/v1/signin'
 
   const credentials = {
@@ -10,7 +10,36 @@ describe('Authenticate Endpoints', () => {
     password: 'admin:p@ss'
   }
 
+  const user = {
+    name: faker.name.findName(),
+    username: faker.random.alphaNumeric(6),
+    email: faker.internet.email(),
+    password: faker.internet.password()
+  }
+
   describe('POST /signin', () => {
+    beforeAll(async () => {
+      await request(app)
+        .post('/api/v1/signup')
+        .send(user)
+
+      const responseLoginUser = await request(app)
+        .post(url)
+        .send({
+          email: user.email,
+          password: user.password
+        })
+
+      user.token = responseLoginUser.body.token
+
+      await request(app)
+        .patch('/api/v1/users')
+        .send({
+          status: 'Inactive'
+        })
+        .set({ Authorization: `Bearer ${user.token}` })
+    })
+
     test('Should return 200 when authenticate a user with valid credentials', async () => {
       const response = await request(app)
         .post(url)
@@ -45,6 +74,20 @@ describe('Authenticate Endpoints', () => {
       expect(response.status).toBe(401)
       expect(response.body.message).toEqual(
         expect.stringMatching('Senha incorreta')
+      )
+    })
+
+    test('Should return 403 when the user status is Inactive', async () => {
+      const response = await request(app)
+        .post(url)
+        .send({
+          email: user.email,
+          password: user.password
+        })
+
+      expect(response.status).toBe(403)
+      expect(response.body.message).toEqual(
+        expect.stringMatching('Este usuário está desabilitado')
       )
     })
 

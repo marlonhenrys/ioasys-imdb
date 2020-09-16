@@ -41,6 +41,7 @@ module.exports = {
     'name.required': 'O nome é obrigatório'
   },
   person: {
-    'name.required': 'O nome é obrigatório'
+    'name.required': 'O nome é obrigatório',
+    'name.min': 'O nome deve possuir no mínimo 3 caracteres'
   }
 }

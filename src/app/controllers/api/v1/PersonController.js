@@ -24,7 +24,7 @@ module.exports = {
   create: async (req, res) => {
     try {
       await validator.validate(req.body, {
-        name: 'required|string',
+        name: 'required|string|min:3',
         biography: 'string'
       }, errorMessages)
 
@@ -63,7 +63,7 @@ module.exports = {
   update: async (req, res) => {
     try {
       await validator.validate(req.body, {
-        name: 'string',
+        name: 'string|min:3',
         biography: 'string'
       }, errorMessages)
 

@@ -12,6 +12,10 @@ const options = {
     },
     filename: async (req, file, cb) => {
       try {
+        console.log('AAAAAAAAAAAAAAAAAAAAA', file)
+        if (!file) {
+          throw ApplicationError('O arquivo é obrigatório', HttpStatus.BAD_REQUEST)
+        }
         const film = await filmService.findOne(req.params.id)
 
         const fileName = `film_cover_${film.id}${path.extname(file.originalname)}`
@@ -45,10 +49,20 @@ const upload = multer(options).single('file')
 module.exports = (req, res, next) => {
   upload(req, res, (error) => {
     if (error) {
+      if (error.code === 'LIMIT_FILE_SIZE') {
+        error.status = 400
+        error.message = 'O tamanho máximo permitido para o arquivo é de 5MB'
+      }
+
       console.error(error)
 
       return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
         message: error.message
+      })
+    }
+    if (!req.file) {
+      return res.status(HttpStatus.BAD_REQUEST).json({
+        message: 'O arquivo é obrigatório'
       })
     }
     return next()

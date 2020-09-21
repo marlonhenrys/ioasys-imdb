@@ -12,10 +12,6 @@ const options = {
     },
     filename: async (req, file, cb) => {
       try {
-        console.log('AAAAAAAAAAAAAAAAAAAAA', file)
-        if (!file) {
-          throw ApplicationError('O arquivo é obrigatório', HttpStatus.BAD_REQUEST)
-        }
         const film = await filmService.findOne(req.params.id)
 
         const fileName = `film_cover_${film.id}${path.extname(file.originalname)}`

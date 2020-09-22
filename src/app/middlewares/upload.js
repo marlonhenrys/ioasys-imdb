@@ -46,7 +46,7 @@ module.exports = (req, res, next) => {
   upload(req, res, (error) => {
     if (error) {
       if (error.code === 'LIMIT_FILE_SIZE') {
-        error.status = 400
+        error.status = HttpStatus.BAD_REQUEST
         error.message = 'O tamanho máximo permitido para o arquivo é de 5MB'
       }
 

@@ -34,6 +34,7 @@ module.exports = {
     'release.date': 'Formato de data inválido',
     'duration.required': 'O tempo de duração é obrigatório',
     'duration.regex': 'Formato de tempo inválido',
+    'value.required': 'O valor da avaliação é obrigatório',
     'value.number': 'O valor deve ser inteiro e positivo',
     'value.under': 'O valor deve estar entre 0 e 4'
   },

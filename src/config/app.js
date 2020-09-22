@@ -1,13 +1,11 @@
+require('dotenv').config()
+
 const express = require('express')
 const morgan = require('morgan')
 const routes = require('./routes')
 const swaggerUi = require('swagger-ui-express')
 const swaggerConfig = require('./swagger')
 const path = require('path')
-
-require('dotenv').config({
-  path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env'
-})
 
 require('../database')
 require('./indicative')

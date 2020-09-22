@@ -45,10 +45,20 @@ const upload = multer(options).single('file')
 module.exports = (req, res, next) => {
   upload(req, res, (error) => {
     if (error) {
+      if (error.code === 'LIMIT_FILE_SIZE') {
+        error.status = HttpStatus.BAD_REQUEST
+        error.message = 'O tamanho máximo permitido para o arquivo é de 5MB'
+      }
+
       console.error(error)
 
       return res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({
         message: error.message
+      })
+    }
+    if (!req.file) {
+      return res.status(HttpStatus.BAD_REQUEST).json({
+        message: 'O arquivo é obrigatório'
       })
     }
     return next()

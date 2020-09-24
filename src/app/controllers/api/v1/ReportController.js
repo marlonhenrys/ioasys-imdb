@@ -7,7 +7,7 @@ module.exports = {
     try {
       const result = await filmService.graph()
 
-      if (result.length === 0) {
+      if (!result.length) {
         return res.status(HttpStatus.NO_CONTENT).send()
       }
 
@@ -27,7 +27,7 @@ module.exports = {
 
       const result = await filmService.ranking(size)
 
-      if (result.length === 0) {
+      if (!result.length) {
         return res.status(HttpStatus.NO_CONTENT).send()
       }
 

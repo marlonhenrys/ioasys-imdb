@@ -11,6 +11,10 @@ module.exports = {
 
       const films = await filmService.findAll(page, limit, filters)
 
+      if (!films.length) {
+        return res.status(HttpStatus.NO_CONTENT).send()
+      }
+
       return res.status(HttpStatus.OK).json(films)
     } catch (error) {
       console.error(error)

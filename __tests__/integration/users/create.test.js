@@ -10,7 +10,7 @@ describe('User endpoints', () => {
     password: 'admin:p@ss'
   }
 
-  const userData = {
+  const user = {
     name: faker.name.findName(),
     username: faker.random.alphaNumeric(6),
     email: faker.internet.email(),
@@ -33,7 +33,7 @@ describe('User endpoints', () => {
     test('Should return 201 when admin creates a new user with valid credentials', async () => {
       const response = await request(app)
         .post(url)
-        .send(userData)
+        .send(user)
         .set({ Authorization: `Bearer ${admin.token}` })
 
       expect(response.status).toBe(201)

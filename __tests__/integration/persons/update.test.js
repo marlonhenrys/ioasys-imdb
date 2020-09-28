@@ -37,7 +37,10 @@ describe('Person endpoints', () => {
     test('Should return 204 when admin updates a person', async () => {
       const response = await request(app)
         .put(`${url}/${person.id}`)
-        .send(person)
+        .send({
+          name: faker.name.findName(),
+          biography: faker.lorem.paragraph()
+        })
         .set({ Authorization: `Bearer ${admin.token}` })
 
       console.log(response.body)

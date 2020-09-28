@@ -11,6 +11,10 @@ module.exports = {
 
       const users = await userService.findAll(page, limit, filters)
 
+      if (!users.length) {
+        return res.status(HttpStatus.NO_CONTENT).send()
+      }
+
       return res.status(HttpStatus.OK).json(users)
     } catch (error) {
       console.error(error)

@@ -65,5 +65,12 @@ describe('Genre endpoints', () => {
         expect.stringMatching(genre.name)
       )
     })
+
+    test('Should return 204 when the genre list is empty', async () => {
+      const response = await request(app)
+        .get(`${url}?name=123`)
+
+      expect(response.status).toBe(204)
+    })
   })
 })

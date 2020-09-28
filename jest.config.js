@@ -12,5 +12,5 @@ module.exports = {
   coverageReporters: ['json', 'text', 'lcov', 'clover'],
   moduleFileExtensions: ['js', 'jsx', 'json', 'yml'],
   testMatch: ['**/__tests__/**/*.test.js?(x)'],
-  testTimeout: 30000
+  testTimeout: 50000
 }

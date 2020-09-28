@@ -7,6 +7,10 @@ module.exports = {
     try {
       const result = await filmService.graph()
 
+      if (!result.length) {
+        return res.status(HttpStatus.NO_CONTENT).send()
+      }
+
       return res.status(HttpStatus.OK).json(result)
     } catch (error) {
       console.error(error)
@@ -22,6 +26,10 @@ module.exports = {
       const { size } = req.query
 
       const result = await filmService.ranking(size)
+
+      if (!result.length) {
+        return res.status(HttpStatus.NO_CONTENT).send()
+      }
 
       return res.status(HttpStatus.OK).json(result)
     } catch (error) {

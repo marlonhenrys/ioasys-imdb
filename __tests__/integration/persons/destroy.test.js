@@ -34,7 +34,7 @@ describe('Person endpoints', () => {
       person.id = responseCreatePerson.body.id
     })
 
-    test('Should return 204 when admin delete a persons', async () => {
+    test('Should return 204 when admin deletes a person', async () => {
       const response = await request(app)
         .delete(`${url}/${person.id}`)
         .set({ Authorization: `Bearer ${admin.token}` })

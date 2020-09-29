@@ -79,7 +79,16 @@ describe('Film endpoints', () => {
           synopsis: faker.lorem.paragraph(),
           language: 'English',
           release: faker.date.past(),
-          duration: '2:44'
+          duration: '2:44',
+          genres: [
+            genre.id
+          ],
+          persons: [
+            {
+              id: person.id,
+              role: 'Ator'
+            }
+          ]
         })
         .set({ Authorization: `Bearer ${admin.token}` })
 

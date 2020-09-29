@@ -91,7 +91,7 @@ describe('Film endpoints', () => {
   })
 
   describe('GET /films', () => {
-    test('Should return 200 and a list films without filters', async () => {
+    test('Should return 200 and a film list without filters', async () => {
       const response = await request(app)
         .get(url)
 
@@ -102,7 +102,7 @@ describe('Film endpoints', () => {
       expect(response.body.length).toBeGreaterThan(1)
     })
 
-    test('Should return 200 and a list persons with all filters', async () => {
+    test('Should return 200 and a film list with all filters', async () => {
       const response = await request(app)
         .get(`${url}?page=1&limit=5&rating=0&genre=${genre.id}&person=${person.name}&role=Diretor&name=${film.name}`)
 
@@ -115,6 +115,13 @@ describe('Film endpoints', () => {
       expect(response.body[0].name).toEqual(
         expect.stringMatching(film.name)
       )
+    })
+
+    test('Should return 204 when the film list is empty', async () => {
+      const response = await request(app)
+        .get(`${url}?rating=5`)
+
+      expect(response.status).toBe(204)
     })
   })
 })

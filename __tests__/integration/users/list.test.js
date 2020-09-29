@@ -61,5 +61,13 @@ describe('User endpoints', () => {
         expect.stringMatching(user.name)
       )
     })
+
+    test('Should return 204 when the user list is empty', async () => {
+      const response = await request(app)
+        .get(`${url}?name=123`)
+        .set({ Authorization: `Bearer ${admin.token}` })
+
+      expect(response.status).toBe(204)
+    })
   })
 })

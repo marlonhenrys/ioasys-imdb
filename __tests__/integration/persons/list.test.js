@@ -68,5 +68,12 @@ describe('Person endpoints', () => {
         expect.stringMatching(person.name)
       )
     })
+
+    test('Should return 204 when the person list is empty', async () => {
+      const response = await request(app)
+        .get(`${url}?name=123`)
+
+      expect(response.status).toBe(204)
+    })
   })
 })

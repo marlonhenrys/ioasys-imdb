@@ -11,6 +11,10 @@ module.exports = {
 
       const genres = await genreService.findAll(page, limit, filters)
 
+      if (!genres.length) {
+        return res.status(HttpStatus.NO_CONTENT).send()
+      }
+
       return res.status(HttpStatus.OK).json(genres)
     } catch (error) {
       console.error(error)
